@@ -1,21 +1,151 @@
 <img src="../../../assets/images/rev-logo.png" width="30%" height="30%" alt="Revature">
 <form id="register-form" [formGroup]="registerForm">
+     <h3 class="register-header">Create New Account</h3>
     <div class="form-group">
-        <label for="inputFirstName">First Name</label>
+      <div class="input-group">  
+        <div class="input-group-prepend-xs">
+          <span class="input-group-text" id="basic-addon1"> First Name</span>
+        </div> 
         <input type="text" class="form-control" formControlName="fname" id="inputFirstName" placeholder="Enter First Name">
+       </div>
+       <small *ngIf="f.fname?.invalid && f.fname?.touched" class="text-danger">Please enter a first name.</small>
+    </div>
+
+  <div class="form-group">
+    <div class="input-group ">  
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Last Name</span>
+      </div> 
+      <input type="text" class="form-control" formControlName="lname" id="inputLastName" placeholder="Enter Last Name" >
+     </div>
+     <small *ngIf="f.lname?.invalid && f.lname?.touched" class="text-danger">Please enter a last name.</small>
+  </div>
+    <div class="form-group">
+      <div class="input-group ">  
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope "></i></span>
+        </div> 
+        <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
+       </div>
+      <small *ngIf="f.email?.invalid && f.email?.touched" class="text-danger">Please enter a email address.</small>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-lock "></i></span>
+        </div>
+        <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Enter a Password">
       </div>
-    <div class="form-group">
-        <label for="inputLastName">Last Name</label>
-        <input type="text" class="form-control" formControlName="lname" id="inputLastName" placeholder="Enter Last Name">
+      <small *ngIf="f.password?.invalid && f.password?.touched" class="text-danger">Please enter a password.</small>
     </div>
     <div class="form-group">
-      <label for="inputEmail">Email address</label>
-      <input type="email" class="form-control" formControlName="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
-      <small id="emailHelp" class="form-text text-muted">Ensure you enter the correct email</small>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Street Address</span>
+        </div>
+        <input type="text" class="form-control" formControlName="street_add" id="exampleInputStreetAdd" placeholder="123 Example Av">
+      </div>
+      <small *ngIf="f.street_add?.invalid && f.street_add?.touched" class="text-danger">Please enter Street Address</small>
     </div>
     <div class="form-group">
-      <label for="inputPassword">Password</label>
-      <input type="password" class="form-control" formControlName="password" id="inputPassword" placeholder="Enter Password">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Apt,Suite,Unit</span>
+        </div>
+        <input type="text" class="form-control" formControlName="apt" id="exampleInputApt" placeholder="Apt, Suite, Unit (Optional)">
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="col"> 
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">City</span>
+        </div>
+        <input type="text" class="form-control" formControlName="city" id="exampleInputCity" placeholder="City">
+      </div>
+      <small *ngIf="f.city?.invalid && f.city?.touched" class="text-danger">Please enter a City</small>
+    </div>
+    </div>
+    
+    <div class="col">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">State</span>
+          </div>
+          <select class="form-control"  formControlName="state" id="exampleInputState">
+            <option value="" disabled selected hidden>N/A</option>
+            <option value="AK">Alaska</option>
+            <option value="AL">Alabama</option>
+            <option value="AR">Arkansas</option>
+            <option value="AZ">Arizona</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DC">District of Columbia</option>
+            <option value="DE">Delaware</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="IA">Iowa</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MD">Maryland</option>
+            <option value="ME">Maine</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MO">Missouri</option>
+            <option value="MS">Mississippi</option>
+            <option value="MT">Montana</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="NE">Nebraska</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NV">Nevada</option>
+            <option value="NY">New York</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="PR">Puerto Rico</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VA">Virginia</option>
+            <option value="VT">Vermont</option>
+            <option value="WA">Washington</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WV">West Virginia</option>
+            <option value="WY">Wyoming</option>
+        </select>
+        </div>
+        <small *ngIf="f.state?.invalid && f.state?.touched" class="text-danger">Please select a State.</small>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Zipcode</span>
+          </div>
+          <input type="text" class="form-control" formControlName="zipcode" id="exampleInputZipcode" placeholder="Zipcode">
+        </div>
+        <small *ngIf="f.zipcode?.invalid && f.zipcode?.touched" class="text-danger">Please enter a Zipcode</small>
+      </div>
+    </div>
     </div>
     <button class="btn btn-primary" (click)="onSubmit()">Register</button>
 </form>
