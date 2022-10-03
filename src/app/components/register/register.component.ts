@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -11,10 +11,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit {
 
   registerForm = new UntypedFormGroup({
-    fname: new UntypedFormControl(''),
-    lname: new UntypedFormControl(''),
-    email: new UntypedFormControl(''),
-    password: new UntypedFormControl('')
+    fname: new UntypedFormControl('', Validators.required),
+    lname: new UntypedFormControl('', Validators.required),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', Validators.required)
   })
   
 
@@ -29,6 +29,10 @@ export class RegisterComponent implements OnInit {
       (err) => console.log(err),
       () => this.router.navigate(['login'])
     );
+  }
+
+  get f(){
+    return this.registerForm.controls;
   }
 
 }

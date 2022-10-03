@@ -1,22 +1,45 @@
 <img src="../../../assets/images/rev-logo.png" width="30%" height="30%" alt="Revature">
 <form id="register-form" [formGroup]="registerForm">
+     <h3 class="register-header">Create New Account</h3>
     <div class="form-group">
-        <label for="inputFirstName">First Name</label>
+      <div class="input-group ">  
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"> First Name</span>
+        </div> 
         <input type="text" class="form-control" formControlName="fname" id="inputFirstName" placeholder="Enter First Name">
+       </div>
+       <small *ngIf="f.fname?.invalid && f.fname?.touched" class="text-danger">Please enter a first name.</small>
+    </div>
+
+  <div class="form-group">
+    <div class="input-group ">  
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Last Name</span>
+      </div> 
+      <input type="text" class="form-control" formControlName="lname" id="inputLastName" placeholder="Enter Last Name" >
+     </div>
+     <small *ngIf="f.lname?.invalid && f.lname?.touched" class="text-danger">Please enter a last name.</small>
+  </div>
+    <div class="form-group">
+      <div class="input-group ">  
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope "></i></span>
+        </div> 
+        <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
+       </div>
+      <small *ngIf="f.email?.invalid && f.email?.touched" class="text-danger">Please enter a email address.</small>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-lock "></i></span>
+        </div>
+        <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Enter a Password">
       </div>
-    <div class="form-group">
-        <label for="inputLastName">Last Name</label>
-        <input type="text" class="form-control" formControlName="lname" id="inputLastName" placeholder="Enter Last Name">
+      <small *ngIf="f.password?.invalid && f.password?.touched" class="text-danger">Please enter a password.</small>
     </div>
-    <div class="form-group">
-      <label for="inputEmail">Email address</label>
-      <input type="email" class="form-control" formControlName="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
-      <small id="emailHelp" class="form-text text-muted">Ensure you enter the correct email</small>
-    </div>
-    <div class="form-group">
-      <label for="inputPassword">Password</label>
-      <input type="password" class="form-control" formControlName="password" id="inputPassword" placeholder="Enter Password">
-    </div>
+
+    
     <button class="btn btn-primary" (click)="onSubmit()">Register</button>
 </form>
 
