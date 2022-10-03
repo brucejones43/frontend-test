@@ -22,13 +22,28 @@ export class LoginComponent implements OnInit {
   }
   
   onSubmit(): void {
-    this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).subscribe(
+    if(this.loginForm.valid){
+      this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).subscribe(
       () => {
         this.authService.loggedIn=true;
       },
       (err) => console.log(err),
       () => this.router.navigate(['home'])
     );
+    }else{  
+      this.validateForm(this.loginForm);
+    }
+  }
+
+  validateForm(untypedFormGroup: UntypedFormGroup){
+    Object.keys(untypedFormGroup.controls).forEach(field =>{
+      const control = untypedFormGroup.get(field);
+      if(control instanceof UntypedFormControl){
+        control.markAsTouched({onlySelf:true});
+      }else if(control instanceof UntypedFormGroup){
+        this.validateForm(control);
+      }
+    })
   }
 
   register(): void {
