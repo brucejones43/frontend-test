@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).subscribe(
       () => {
         this.authService.loggedIn=true;
+        sessionStorage.setItem("loggedIn", "true");
       },
       (err) => console.log(err),
       () => this.router.navigate(['home'])

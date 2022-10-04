@@ -1,2 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
+.body-dark-background {
+    background-color: rgb(39, 39, 39) !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.dark-background {
+    background-color: rgb(56, 56, 56) !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.dark-background-2 {
+    background-color: rgb(87, 87, 87) !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.dark-foreground {
+    color: white !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+
