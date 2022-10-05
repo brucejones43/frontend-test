@@ -13,6 +13,8 @@ import { DisplayProductsComponent } from './components/display-products/display-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { OrdersComponent } from './components/orders/orders.component';
+import { OrderCardComponent } from './components/order-card/order-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     ProductCardComponent,
     CartComponent,
     CheckoutComponent,
-    DisplayProductsComponent
+    DisplayProductsComponent,
+    OrdersComponent,
+    OrderCardComponent
   ],
   imports: [
     BrowserModule,
