@@ -1,5 +1,5 @@
 import { Component, Directive, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -16,15 +16,46 @@ export class NavbarComponent implements OnInit{
   cartCount!: number;
   subscription!: Subscription;
 
+  // This is getting child elements rendered with ngIf
   @ViewChildren('navLinkLight') navLinkLightBtns!: QueryList<ElementRef>;
 
-  constructor(private authService: AuthService, private router: Router, private productService: ProductService) { }
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService) { }
   
   ngOnInit(): void {
     this.subscription = this.productService.getCart().subscribe(
       (cart) => this.cartCount = cart.cartCount
     );
 
+
+  }
+
+  retrieveByBrand(brand: string) {
+    if (sessionStorage.getItem("loggedIn") === "true") {
+      this.router.navigate(['home'], {
+        queryParams: {
+          brand:`${brand}`
+        },
+        skipLocationChange: false
+      })
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    } else {
+      this.router.navigate(['login']);
+    }
+  }
+
+  retrieveByCategory(category: string) {
+    if (sessionStorage.getItem("loggedIn") === "true") {
+      
+      this.router.navigate(['home'], {
+        queryParams: {
+          category:`${category}`
+        },
+        skipLocationChange: false
+      })
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
   ngAfterViewInit() {
@@ -103,6 +134,8 @@ export class NavbarComponent implements OnInit{
     }
     
   }
+
+
 
   toggleDarkMode() {
     console.log("TOGGLE");

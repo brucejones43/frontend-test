@@ -24,44 +24,44 @@
             <li class="nav-item dropdown">
                 <a #navLinkLight class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/products/category/guitars']">Guitars</a>
+                    <a class="dropdown-item" (click)="retrieveByCategory('Guitars')">Guitars</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/category/keyboards']">Keyboards</a>
+                    <a class="dropdown-item" (click)="retrieveByCategory('Pianos')">Keyboards</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/category/drums']">Drums</a>
+                    <a class="dropdown-item" (click)="retrieveByCategory('Drums')">Drums</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/category/woodwinds']">Woodwinds</a>
+                    <a class="dropdown-item" (click)="retrieveByCategory('Woodwinds')">Woodwinds</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/category/dj-equipment']">DJ Equipment</a>
+                    <a class="dropdown-item" (click)="retrieveByCategory('DJ Equipment')">DJ Equipment</a>
                 </div>
             </li>
 
             <li class="nav-item dropdown">
                 <a #navLinkLight class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brands</a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/products/brand/martin']">Martin</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Martin')">Martin</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/fender']">Fender</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Fender')">Fender</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/epiphone']">Epiphone</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Epiphone')">Epiphone</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/taylor']">Taylor</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Taylor')">Taylor</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/casio']">Casio</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Casio')">Casio</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/rogue']">Rogue</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Rogue')">Rogue</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/williams']">Williams</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Williams')">Williams</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/numark']">Numark</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Numark')">Numark</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/yamaha']">Yamaha</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Yamaha')">Yamaha</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/etude']">Etude</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Etude')">Etude</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/mitchell']">Mitchell</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Mitchell')">Mitchell</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/products/brand/pioneer']">Pioneer</a>
+                    <a class="dropdown-item" (click)="retrieveByBrand('Pioneer')">Pioneer</a>
                 </div>
             </li>
 
@@ -70,9 +70,9 @@
             </li>
 
             <li *ngIf="isLoggedIn" class="nav-item dropdown mx-2">
-                <a #navLinkLight class="nav-link dropdown-toggle" href="#" id="navbarDropdown nav-link-light" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a #navLinkLight class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <svg class="fa-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path fill="#437bac" class="icon-svg"
+                        <path #navLinkLight fill="#437bac" class="icon-svg"
                             d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                     </svg>
                     <!-- <span class="nav-text">Account</span> -->
