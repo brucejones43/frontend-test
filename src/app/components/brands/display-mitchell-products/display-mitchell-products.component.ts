@@ -5,20 +5,20 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-display-piano-products',
-  templateUrl: './display-piano-products.component.html',
-  styleUrls: ['./display-piano-products.component.css']
+  selector: 'app-display-mitchell-products',
+  templateUrl: './display-mitchell-products.component.html',
+  styleUrls: ['./display-mitchell-products.component.css']
 })
-export class DisplayPianoProductsComponent implements OnInit {
+export class DisplayMitchellProductsComponent implements OnInit {
 
   allProducts: Product[] = [];
 
   constructor(private productService: ProductService, private router: Router, private titleService: Title) { 
-    this.titleService.setTitle("Keyboard Products - Soul Sounds")
+    this.titleService.setTitle("Mitchell Products - Soul Sounds")
   }
 
   ngOnInit(): void {
-    this.productService.getProductsByCategory("Pianos").subscribe(
+    this.productService.getProductsByBrand("Mitchell").subscribe(
       (resp) => this.allProducts = resp,
       (err) => {
         console.log(err);
@@ -58,7 +58,6 @@ export class DisplayPianoProductsComponent implements OnInit {
         lightForeground[i].classList.add("dark-foreground");
       }
     }
-
   }
 
 }

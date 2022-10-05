@@ -22,11 +22,13 @@
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" [routerLink]="['/brands']" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                <a #navLinkLight class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" [routerLink]="['/products/category/guitars']">Guitars</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" [routerLink]="['/products/category/keyboards']">Keyboards</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/category/drums']">Drums</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" [routerLink]="['/products/category/woodwinds']">Woodwinds</a>
                     <div class="dropdown-divider"></div>
@@ -35,8 +37,10 @@
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" [routerLink]="['/brands']" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brands</a>
+                <a #navLinkLight class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brands</a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/products/brand/martin']">Martin</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" [routerLink]="['/products/brand/fender']">Fender</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" [routerLink]="['/products/brand/epiphone']">Epiphone</a>
@@ -44,6 +48,8 @@
                     <a class="dropdown-item" [routerLink]="['/products/brand/taylor']">Taylor</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" [routerLink]="['/products/brand/casio']">Casio</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/rogue']">Rogue</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" [routerLink]="['/products/brand/williams']">Williams</a>
                     <div class="dropdown-divider"></div>
@@ -59,18 +65,41 @@
                 </div>
             </li>
 
-            <li *ngIf="isLoggedIn==false" class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
+            <li *ngIf="isLoggedIn==false" class="nav-item mx-2">
+                <a #navLinkLight class="nav-link" [routerLink]="['/login']">Login</a>
             </li>
 
-            <li *ngIf="isLoggedIn" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Account
+            <li *ngIf="isLoggedIn" class="nav-item dropdown mx-2">
+                <a #navLinkLight class="nav-link dropdown-toggle" href="#" id="navbarDropdown nav-link-light" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg class="fa-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="#437bac" class="icon-svg"
+                            d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                    </svg>
+                    <!-- <span class="nav-text">Account</span> -->
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/userProfile']">Update Account</a>
+                    <a class="dropdown-item" [routerLink]="['/account']">
+                        <svg class="fa-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="#437bac" class="icon-svg"
+                                d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                        </svg>
+                        Update Account
+                    </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/orders']">Orders</a>
+                    <a class="dropdown-item" [routerLink]="['/orders']">
+                        <svg class="fa-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                            <path fill="#437bac"
+                                d="M36.8 192H603.2c20.3 0 36.8-16.5 36.8-36.8c0-7.3-2.2-14.4-6.2-20.4L558.2 21.4C549.3 8 534.4 0 518.3 0H121.7c-16 0-31 8-39.9 21.4L6.2 134.7c-4 6.1-6.2 13.2-6.2 20.4C0 175.5 16.5 192 36.8 192zM64 224V384v80c0 26.5 21.5 48 48 48H336c26.5 0 48-21.5 48-48V384 224H320V384H128V224H64zm448 0V480c0 17.7 14.3 32 32 32s32-14.3 32-32V224H512z"/>
+                        </svg>
+                        &nbsp;Previous Orders
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/wishlist']">
+                        <svg class="fa-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="#437bac"
+                            d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
+                        </svg>
+                        &nbsp;My Wishlist</a>
                     
                     <!--<a class="dropdown-item" [routerLink]="['/cart']">Cart</a> -->
                 </div>
