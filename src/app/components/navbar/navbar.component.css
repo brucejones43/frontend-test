@@ -1,4 +1,13 @@
 
+.nav-link:hover {
+    background-color: #dae0e5;
+}
+
+.fa-primary {
+    height: 1.2rem;
+    width: 1.3rem;
+}
+
 #searchForm {
     width: 50%;
 }

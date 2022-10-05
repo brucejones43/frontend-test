@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-display-dj-equipment-products',
-  templateUrl: './display-dj-equipment-products.component.html',
-  styleUrls: ['./display-dj-equipment-products.component.css']
+  selector: 'app-display-fender-products',
+  templateUrl: './display-fender-products.component.html',
+  styleUrls: ['./display-fender-products.component.css']
 })
-export class DisplayDjEquipmentProductsComponent implements OnInit {
+export class DisplayFenderProductsComponent implements OnInit {
 
   allProducts: Product[] = [];
 
   constructor(private productService: ProductService, private router: Router, private titleService: Title) { 
-    this.titleService.setTitle("DJ Equipment - Soul Sounds")
+    this.titleService.setTitle("Fender Products - Soul Sounds")
   }
 
   ngOnInit(): void {
-    this.productService.getProductsByCategory("DJ Equipment").subscribe(
+    this.productService.getProductsByBrand("Fender").subscribe(
       (resp) => this.allProducts = resp,
       (err) => {
         console.log(err);
@@ -58,7 +58,6 @@ export class DisplayDjEquipmentProductsComponent implements OnInit {
         lightForeground[i].classList.add("dark-foreground");
       }
     }
-    
   }
 
 }
