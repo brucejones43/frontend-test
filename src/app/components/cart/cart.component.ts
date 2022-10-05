@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
@@ -17,9 +18,13 @@ export class CartComponent implements OnInit {
   totalPrice!: number;
   cartProducts: Product[] = [];
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private titleService: Title) {
+    this.titleService.setTitle("View Cart - Soul Sounds");
+  }
 
   ngOnInit(): void {
+    
+    
     this.productService.getCart().subscribe(
       (cart) => {
         this.products = cart.products;
@@ -27,6 +32,13 @@ export class CartComponent implements OnInit {
           (element) => this.cartProducts.push(element.product)
         );
         this.totalPrice = cart.totalPrice;
+      },
+      (err) => {
+        console.log(err);
+        if (err.status == 401) {
+          sessionStorage.setItem("loggedIn", "false");
+          this.router.navigate(['login']);
+        } 
       }
     );
 

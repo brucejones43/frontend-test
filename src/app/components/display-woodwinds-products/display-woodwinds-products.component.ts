@@ -4,23 +4,21 @@ import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
-
 @Component({
-  selector: 'app-display-guitar-products',
-  templateUrl: './display-guitar-products.component.html',
-  styleUrls: ['./display-guitar-products.component.css']
+  selector: 'app-display-woodwinds-products',
+  templateUrl: './display-woodwinds-products.component.html',
+  styleUrls: ['./display-woodwinds-products.component.css']
 })
-export class DisplayGuitarProductsComponent implements OnInit {
+export class DisplayWoodwindsProductsComponent implements OnInit {
 
   allProducts: Product[] = [];
 
   constructor(private productService: ProductService, private router: Router, private titleService: Title) { 
-    this.titleService.setTitle("Guitar Products - Soul Sounds")
+    this.titleService.setTitle("Woodwind Instruments - Soul Sounds")
   }
 
-
   ngOnInit(): void {
-    this.productService.getProductsByCategory("Guitars").subscribe(
+    this.productService.getProductsByCategory("Woodwinds").subscribe(
       (resp) => this.allProducts = resp,
       (err) => {
         console.log(err);
