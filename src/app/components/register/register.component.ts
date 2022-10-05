@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -23,10 +24,10 @@ export class RegisterComponent implements OnInit {
   })
   
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private titleService: Title) { }
 
   ngOnInit(): void {
-    
+    this.titleService.setTitle("Sign up - Soul Sounds");
   }
   
   onSubmit(): void {

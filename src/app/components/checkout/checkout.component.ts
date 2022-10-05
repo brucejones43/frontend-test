@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { OrderService } from 'src/app/services/order.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-checkout',
@@ -33,9 +33,12 @@ export class CheckoutComponent implements OnInit {
     country: new UntypedFormControl('', Validators.required)
   });
 
-  constructor(private productService: ProductService,private orderService: OrderService ,private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private titleService: Title) { 
+    this.titleService.setTitle("Checkout - Soul Sounds");
+  }
 
   ngOnInit(): void {
+    
     this.productService.getCart().subscribe(
       (cart) => {
         this.products = cart.products;
@@ -43,6 +46,13 @@ export class CheckoutComponent implements OnInit {
           (element) => this.cartProducts.push(element.product)
         );
         this.totalPrice = cart.totalPrice;
+      },
+      (err) => {
+        console.log(err);
+        if (err.status == 401) {
+          sessionStorage.setItem("loggedIn", "false");
+          this.router.navigate(['login']);
+        } 
       }
     );
   }

@@ -1,8 +1,187 @@
-<nav class="navbar navbar-light bg-light">
-    <h4>
-        <img src="../../../assets/images/favicon.png" width="8%" height="8%" alt="Revature">
-        Revature Swag Shop
-    </h4>
+<nav class="navbar navbar-expand-lg light-background bg-light py-0">
+    <div class="logo-holder col mr-auto">
+        <div class="row align-items-center">
+            <a class="navbar-brand" [routerLink]="['/home']">
+                <img src="../../../assets/images/soulsounds-logo.png" width="140px" alt="Revature">
+            </a>
+            <h4 class="light-foreground">Soul Sounds Shop</h4>
+        </div>
+        
+    </div>
+    
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form id="searchForm" class="row form-inline my-lg-0 m-auto">
+            <input id="searchBar" class="form-control mr-sm-2" type="search" placeholder="Search for products..." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" [routerLink]="['/brands']" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/products/category/guitars']">Guitars</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/category/keyboards']">Keyboards</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/category/woodwinds']">Woodwinds</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/category/dj-equipment']">DJ Equipment</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" [routerLink]="['/brands']" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brands</a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/products/brand/fender']">Fender</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/epiphone']">Epiphone</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/taylor']">Taylor</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/casio']">Casio</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/williams']">Williams</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/numark']">Numark</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/yamaha']">Yamaha</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/etude']">Etude</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/mitchell']">Mitchell</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/products/brand/pioneer']">Pioneer</a>
+                </div>
+            </li>
+
+            <li *ngIf="isLoggedIn==false" class="nav-item">
+                <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+
+            <li *ngIf="isLoggedIn" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Account
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/userProfile']">Update Account</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/orders']">Orders</a>
+                    
+                    <!--<a class="dropdown-item" [routerLink]="['/cart']">Cart</a> -->
+                </div>
+            </li>
+            <form *ngIf="isLoggedIn" class="form-inline">
+                <button class="btn btn-light" [routerLink]="['/cart']">
+                    Cart
+                    <span class="badge badge-info">{{cartCount}}</span>
+                </button>
+                <button class="btn btn-outline-danger my-2 my-sm-0" (click)="logout();">Logout</button>
+            </form>
+        </ul>
+        
+    </div>
+    <div class="dark-mode-toggle">
+        <input type="checkbox" class="checkbox" id="checkbox" (change)="toggleDarkMode();">
+        <label for="checkbox" class="label">
+            <i class="fa fa-moon-o" aria-hidden="true"></i>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+            <div class="ball"></div>
+        </label>
+    </div>
+</nav>
+
+<!-- <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="['/home']">
+        <img src="../../../assets/images/soulsounds-logo.png" width="15%" alt="Revature">
+    </a>
+    <h4>Soul Sounds Shop</h4>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="navbar-nav mr-auto">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="searchInput" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn">Search</button>
+                </form>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="/web/html/products.html" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Products
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/web/html/products/type/blush.html">Blush</a>
+                    <a class="dropdown-item" href="/web/html/products/type/bronzer.html">Bronzer</a>
+                    <a class="dropdown-item" href="/web/html/products/type/eyebrow.html">Eyebrow</a>
+                    <a class="dropdown-item" href="/web/html/products/type/eyeliner.html">Eyeliner</a>
+                    <a class="dropdown-item" href="/web/html/products/type/eyeshadow.html">Eyeshadow</a>
+                    <a class="dropdown-item" href="/web/html/products/type/foundation.html">Foundation</a>
+                    <a class="dropdown-item" href="/web/html/products/type/lipliner.html">LipLiner</a>
+                    <a class="dropdown-item" href="/web/html/products/type/lipstick.html">Lipstick</a>
+                    <a class="dropdown-item" href="/web/html/products/type/mascara.html">Mascara</a>
+                    <a class="dropdown-item" href="/web/html/products/type/nail-polish.html">Nail Polish</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="/web/html/products.html" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Brands
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/web/html/products/brand/almay.html">almay</a>
+                    <a class="dropdown-item" href="/web/html/products/brand/covergirl.html">covergirl</a>
+                    <a class="dropdown-item" href="/web/html/products/brand/marienatie.html">marienatie</a>
+                    <a class="dropdown-item" href="/web/html/products/brand/maybelline.html">maybelline</a>
+                    <a class="dropdown-item" href="/web/html/products/brand/nyx.html">nyx</a>
+                    <a class="dropdown-item" href="/web/html/products/brand/revlon.html">revlon</a>
+
+                </div>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <svg class="fa-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="#95654f" class="icon-svg"
+                            d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                    </svg>
+                    <span class="nav-text">Account</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/web/html/userAccount.html">Account</a>
+                    <a class="dropdown-item" href="/web/html/orders.html">Orders</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/web/html/user_login.html">Login</a>
+                    <a class="dropdown-item" href="/web/html/create_account.html">Create Account</a>
+
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/web/html/cart.html">
+                    <svg class="fa-primary" id="cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path fill="#95654f" class="icon-svg"
+                            d="M24 0C10.7 0 0 10.7 0 24S10.7 48 24 48H76.1l60.3 316.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24-10.7 24-24s-10.7-24-24-24H179.9l-9.1-48h317c14.3 0 26.9-9.5 30.8-23.3l54-192C578.3 52.3 563 32 541.8 32H122l-2.4-12.5C117.4 8.2 107.5 0 96 0H24zM176 512c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm336-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48z" />
+                    </svg>
+                    <span class="nav-text" id="cartCounter">0</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
     <form class="form-inline">
         <button class="btn btn-light" [routerLink]="['/cart']">
             Cart
@@ -10,4 +189,4 @@
         </button>
         <button class="btn btn-outline-danger my-2 my-sm-0" (click)="logout();">Logout</button>
     </form>
-</nav>
+</nav> -->

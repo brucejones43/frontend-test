@@ -4,48 +4,37 @@ import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
+
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-display-guitar-products',
+  templateUrl: './display-guitar-products.component.html',
+  styleUrls: ['./display-guitar-products.component.css']
 })
-export class CartComponent implements OnInit {
+export class DisplayGuitarProductsComponent implements OnInit {
 
-  products: {
-    product: Product,
-    quantity: number
-  }[] = [];
-  totalPrice!: number;
-  cartProducts: Product[] = [];
+  allProducts: Product[] = [];
 
-  constructor(private productService: ProductService, private router: Router, private titleService: Title) {
-    this.titleService.setTitle("View Cart - Soul Sounds");
+  constructor(private productService: ProductService, private router: Router, private titleService: Title) { 
+    this.titleService.setTitle("Guitar Products - Soul Sounds")
   }
 
+
   ngOnInit(): void {
-    
-    
-    this.productService.getCart().subscribe(
-      (cart) => {
-        this.products = cart.products;
-        this.products.forEach(
-          (element) => this.cartProducts.push(element.product)
-        );
-        this.totalPrice = cart.totalPrice;
-      },
+    this.productService.getProductsByCategory("Guitars").subscribe(
+      (resp) => this.allProducts = resp,
       (err) => {
         console.log(err);
         if (err.status == 401) {
           sessionStorage.setItem("loggedIn", "false");
           this.router.navigate(['login']);
         } 
-      }
+      },
+      () => console.log("Products Retrieved")
     );
 
+
     if (localStorage.getItem("mode") === "dark") {
-      let bodyBackground = document.getElementsByClassName("body-light-background");
-      bodyBackground[0].classList.toggle('body-dark-background');
-    
+
       let lightForeground = document.getElementsByClassName("light-foreground");
       let lightBackground = document.getElementsByClassName("light-background");
       let lightBackground2 = document.getElementsByClassName("light-background-2");
@@ -71,16 +60,6 @@ export class CartComponent implements OnInit {
         lightForeground[i].classList.add("dark-foreground");
       }
     }
-  }
-
-  emptyCart(): void {
-    let cart = {
-      cartCount: 0,
-      products: [],
-      totalPrice: 0.00
-    };
-    this.productService.setCart(cart);
-    this.router.navigate(['/home']);
   }
 
 }

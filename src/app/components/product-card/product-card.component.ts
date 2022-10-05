@@ -30,6 +30,34 @@ export class ProductCardComponent implements OnInit{
         this.totalPrice = cart.totalPrice;
       }
     );
+
+    if (localStorage.getItem("mode") === "dark") {
+    
+      let lightForeground = document.getElementsByClassName("light-foreground");
+      let lightBackground = document.getElementsByClassName("light-background");
+      let lightBackground2 = document.getElementsByClassName("light-background-2");
+    
+    
+      //var darkForeground = document.getElementsByClassName("dark-foreground");
+      var darkBackground = document.getElementsByClassName("dark-background");
+    
+      for (let i = 0; i < lightBackground.length; i++) {
+        
+        //lightBackground[i].classList.toggle('light-background');
+        lightBackground[i].classList.add('dark-background');
+        //lightBackground[i].classList.replace("light-background", "dark-background");
+      }
+    
+      for (let i = 0; i < lightBackground2.length; i++) {
+        //lightBackground[i].classList.toggle('light-background');
+        lightBackground2[i].classList.add('dark-background-2');
+        //lightBackground[i].classList.replace("light-background", "dark-background");
+      }
+    
+      for (let i = 0; i < lightForeground.length; i++) {
+        lightForeground[i].classList.add("dark-foreground");
+      }
+    }
   }
 
   addToCart(product: Product): void {

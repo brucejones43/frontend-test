@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <table class="table table-striped" id="cart-table">
     <thead>
-      <tr>
+      <tr class="light-foreground">
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Quantity</th>
@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody id="cart-table-body">
-        <tr *ngFor="let product of products;">
+        <tr class="light-foreground" *ngFor="let product of products;">
             <td>{{product.product.id}}</td>
             <td>{{product.product.name}}</td>
             <td>{{product.quantity}}</td>
