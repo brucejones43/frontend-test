@@ -3,25 +3,23 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-display-products',
-  templateUrl: './display-products.component.html',
-  styleUrls: ['./display-products.component.css']
+  selector: 'app-display-piano-products',
+  templateUrl: './display-piano-products.component.html',
+  styleUrls: ['./display-piano-products.component.css']
 })
-export class DisplayProductsComponent implements OnInit {
+export class DisplayPianoProductsComponent implements OnInit {
 
   allProducts: Product[] = [];
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    
-    this.productService.getProducts().subscribe(
+    this.productService.getProductsByCategory("Pianos").subscribe(
       (resp) => this.allProducts = resp,
       (err) => console.log(err),
       () => console.log("Products Retrieved")
     );
-    
-    
+
 
     if (localStorage.getItem("mode") === "dark") {
 
@@ -50,6 +48,7 @@ export class DisplayProductsComponent implements OnInit {
         lightForeground[i].classList.add("dark-foreground");
       }
     }
+
   }
 
 }

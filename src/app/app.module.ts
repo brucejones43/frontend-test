@@ -13,6 +13,9 @@ import { DisplayProductsComponent } from './components/display-products/display-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { DisplayGuitarProductsComponent } from './components/display-guitar-products/display-guitar-products.component';
+import { DisplayPianoProductsComponent } from './components/display-piano-products/display-piano-products.component';
+import { DisplayDjEquipmentProductsComponent } from './components/display-dj-equipment-products/display-dj-equipment-products.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     ProductCardComponent,
     CartComponent,
     CheckoutComponent,
-    DisplayProductsComponent
+    DisplayProductsComponent,
+    DisplayGuitarProductsComponent,
+    DisplayPianoProductsComponent,
+    DisplayDjEquipmentProductsComponent
   ],
   imports: [
     BrowserModule,
