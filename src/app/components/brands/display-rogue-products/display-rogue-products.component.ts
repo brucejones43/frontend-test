@@ -5,20 +5,20 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-display-woodwinds-products',
-  templateUrl: './display-woodwinds-products.component.html',
-  styleUrls: ['./display-woodwinds-products.component.css']
+  selector: 'app-display-rogue-products',
+  templateUrl: './display-rogue-products.component.html',
+  styleUrls: ['./display-rogue-products.component.css']
 })
-export class DisplayWoodwindsProductsComponent implements OnInit {
+export class DisplayRogueProductsComponent implements OnInit {
 
   allProducts: Product[] = [];
 
   constructor(private productService: ProductService, private router: Router, private titleService: Title) { 
-    this.titleService.setTitle("Woodwind Instruments - Soul Sounds")
+    this.titleService.setTitle("Rogue Products - Soul Sounds")
   }
 
   ngOnInit(): void {
-    this.productService.getProductsByCategory("Woodwinds").subscribe(
+    this.productService.getProductsByBrand("Rogue").subscribe(
       (resp) => this.allProducts = resp,
       (err) => {
         console.log(err);
