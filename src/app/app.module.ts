@@ -16,6 +16,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { DisplayGuitarProductsComponent } from './components/display-guitar-products/display-guitar-products.component';
 import { DisplayPianoProductsComponent } from './components/display-piano-products/display-piano-products.component';
 import { DisplayDjEquipmentProductsComponent } from './components/display-dj-equipment-products/display-dj-equipment-products.component';
+import { DisplayWoodwindsProductsComponent } from './components/display-woodwinds-products/display-woodwinds-products.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DisplayDjEquipmentProductsComponent } from './components/display-dj-equ
     DisplayProductsComponent,
     DisplayGuitarProductsComponent,
     DisplayPianoProductsComponent,
-    DisplayDjEquipmentProductsComponent
+    DisplayDjEquipmentProductsComponent,
+    DisplayWoodwindsProductsComponent
   ],
   imports: [
     BrowserModule,
