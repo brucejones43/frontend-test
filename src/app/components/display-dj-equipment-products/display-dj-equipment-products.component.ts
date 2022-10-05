@@ -3,25 +3,23 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-display-products',
-  templateUrl: './display-products.component.html',
-  styleUrls: ['./display-products.component.css']
+  selector: 'app-display-dj-equipment-products',
+  templateUrl: './display-dj-equipment-products.component.html',
+  styleUrls: ['./display-dj-equipment-products.component.css']
 })
-export class DisplayProductsComponent implements OnInit {
+export class DisplayDjEquipmentProductsComponent implements OnInit {
 
   allProducts: Product[] = [];
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    
-    this.productService.getProducts().subscribe(
+    this.productService.getProductsByCategory("DJ Equipment").subscribe(
       (resp) => this.allProducts = resp,
       (err) => console.log(err),
       () => console.log("Products Retrieved")
     );
-    
-    
+
 
     if (localStorage.getItem("mode") === "dark") {
 
