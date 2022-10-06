@@ -4,11 +4,11 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { DisplayDjEquipmentProductsComponent } from './components/display-dj-equipment-products/display-dj-equipment-products.component';
 import { DisplayGuitarProductsComponent } from './components/display-guitar-products/display-guitar-products.component';
+import { DisplayOrdersComponent } from './components/display-orders/display-orders.component';
 import { DisplayPianoProductsComponent } from './components/display-piano-products/display-piano-products.component';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { DisplayWoodwindsProductsComponent } from './components/display-woodwinds-products/display-woodwinds-products.component';
 import { LoginComponent } from './components/login/login.component';
-import { OrdersComponent } from './components/orders/orders.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: "products/category/dj-equipment", component: DisplayDjEquipmentProductsComponent },
   { path: "cart", component: CartComponent },
   { path: "checkout", component: CheckoutComponent },
-  { path: "order", component: OrdersComponent}
+  { path: "orders", component: DisplayOrdersComponent}
 ];
 
 @NgModule({

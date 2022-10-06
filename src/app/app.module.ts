@@ -17,6 +17,8 @@ import { DisplayGuitarProductsComponent } from './components/display-guitar-prod
 import { DisplayPianoProductsComponent } from './components/display-piano-products/display-piano-products.component';
 import { DisplayDjEquipmentProductsComponent } from './components/display-dj-equipment-products/display-dj-equipment-products.component';
 import { DisplayWoodwindsProductsComponent } from './components/display-woodwinds-products/display-woodwinds-products.component';
+import { DisplayOrdersComponent } from './components/display-orders/display-orders.component';
+import { OrderCardComponent } from './components/order-card/order-card.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { DisplayWoodwindsProductsComponent } from './components/display-woodwind
     DisplayGuitarProductsComponent,
     DisplayPianoProductsComponent,
     DisplayDjEquipmentProductsComponent,
-    DisplayWoodwindsProductsComponent
+    DisplayWoodwindsProductsComponent,
+    DisplayOrdersComponent,
+    OrderCardComponent
   ],
   imports: [
     BrowserModule,
