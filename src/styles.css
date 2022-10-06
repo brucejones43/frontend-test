@@ -3,12 +3,29 @@
     background-color: #dbdbdd !important;
     transition: 0.2s ease-in-out;
     transition-property: all;
+    
 }
 
 .body-dark-background {
     background-color: #232323 !important;
     transition: 0.2s ease-in-out;
     transition-property: all;
+}
+
+.light-background-glass {
+    /* backdrop-filter: blur(16px) saturate(180%); */
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: #f8f9fa;
+    
+    
+}
+
+.dark-background-glass {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(56, 56, 56);
+    
+    
 }
 
 .dark-background {

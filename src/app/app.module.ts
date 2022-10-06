@@ -30,7 +30,7 @@ import { DisplayYamahaProductsComponent } from './components/brands/display-yama
 import { DisplayEtudeProductsComponent } from './components/brands/display-etude-products/display-etude-products.component';
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
-import { AboutModule } from './components/about/about.module';
+//import { AboutModule } from './components/about/about.module';
 
 @NgModule({
   declarations: [
@@ -66,8 +66,8 @@ import { AboutModule } from './components/about/about.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SweetAlert2Module,
-    AboutModule
+    SweetAlert2Module
+    // AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
