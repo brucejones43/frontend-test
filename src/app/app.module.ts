@@ -31,6 +31,8 @@ import { DisplayEtudeProductsComponent } from './components/brands/display-etude
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
 import { AboutModule } from './components/about/about.module';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { AboutModule } from './components/about/about.module';
     DisplayYamahaProductsComponent,
     DisplayEtudeProductsComponent,
     DisplayMitchellProductsComponent,
-    DisplayPioneerProductsComponent
+    DisplayPioneerProductsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
