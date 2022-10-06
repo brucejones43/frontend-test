@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+.body-light-background {
+    background-color: #dbdbdd !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.body-dark-background {
+    background-color: #232323 !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.dark-background {
+    background-color: rgb(56, 56, 56) !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.dark-background-2 {
+    background-color: rgb(87, 87, 87) !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.dark-foreground {
+    color: white !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.btn-primary {
+    background-color: #437bac !important;
+    border-color: #437bac !important;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+}
+
+.btn-primary:hover {
+    background-color: #2c6da7 !important;
+}
+
+.nav-link {
+    color: #437bac;
+    border-radius: 8%;
+}
+
+.nav-link-dark:hover {
+    color: #dbdbdd !important;
+    background-color: rgb(87, 87, 87) !important;
+}
+
+.btn-outline-success {
+    font-weight:500;
+    color: #437bac !important;
+    border-color: #437bac !important;
+}
+
+.btn-outline-success:hover {
+    background-color: #437bac !important;
+    color: white !important;
+}
+
+.btn-outline-success-dark {
+    color: white !important;
+}
+

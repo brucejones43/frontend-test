@@ -41,7 +41,7 @@ import { AboutModule } from './components/about/about.module';
     ProductCardComponent,
     CartComponent,
     CheckoutComponent,
-    DisplayProductsComponent
+    DisplayProductsComponent,
     DisplayGuitarProductsComponent,
     DisplayPianoProductsComponent,
     DisplayDjEquipmentProductsComponent,
@@ -65,8 +65,8 @@ import { AboutModule } from './components/about/about.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-    SweetAlert2Module
+    ReactiveFormsModule,
+    SweetAlert2Module,
     AboutModule
   ],
   providers: [],
