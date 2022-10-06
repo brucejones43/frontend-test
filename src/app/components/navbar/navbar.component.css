@@ -1,3 +1,15 @@
+.nav-link-dark {
+    color: #dae0e5;
+    fill: #dae0e5;
+}
+.nav-link:hover {
+    background-color: #dae0e5;
+}
+
+.fa-primary {
+    height: 1.2rem;
+    width: 1.3rem;
+}
 
 #searchForm {
     width: 50%;
@@ -6,6 +18,9 @@
     width: 70%;
     text-align: center;
     font-size: 14px;
+}
+.dropdown-item {
+    cursor: pointer;
 }
 
 .dropdown-menu-end {

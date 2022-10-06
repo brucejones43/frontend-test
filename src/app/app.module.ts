@@ -13,12 +13,26 @@ import { DisplayProductsComponent } from './components/display-products/display-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { DisplayGuitarProductsComponent } from './components/display-guitar-products/display-guitar-products.component';
-import { DisplayPianoProductsComponent } from './components/display-piano-products/display-piano-products.component';
-import { DisplayDjEquipmentProductsComponent } from './components/display-dj-equipment-products/display-dj-equipment-products.component';
-import { DisplayWoodwindsProductsComponent } from './components/display-woodwinds-products/display-woodwinds-products.component';
+import { DisplayGuitarProductsComponent } from './components/categories/display-guitar-products/display-guitar-products.component';
+import { DisplayPianoProductsComponent } from './components/categories/display-piano-products/display-piano-products.component';
+import { DisplayDjEquipmentProductsComponent } from './components/categories/display-dj-equipment-products/display-dj-equipment-products.component';
+import { DisplayWoodwindsProductsComponent } from './components/categories/display-woodwinds-products/display-woodwinds-products.component';
 import { DisplayOrdersComponent } from './components/display-orders/display-orders.component';
 import { OrderCardComponent } from './components/order-card/order-card.component';
+import { DisplayDrumProductsComponent } from './components/categories/display-drum-products/display-drum-products.component';
+import { DisplayMartinProductsComponent } from './components/brands/display-martin-products/display-martin-products.component';
+import { DisplayFenderProductsComponent } from './components/brands/display-fender-products/display-fender-products.component';
+import { DisplayEpiphoneProductsComponent } from './components/brands/display-epiphone-products/display-epiphone-products.component';
+import { DisplayTaylorProductsComponent } from './components/brands/display-taylor-products/display-taylor-products.component';
+import { DisplayCasioProductsComponent } from './components/brands/display-casio-products/display-casio-products.component';
+import { DisplayRogueProductsComponent } from './components/brands/display-rogue-products/display-rogue-products.component';
+import { DisplayWilliamsProductsComponent } from './components/brands/display-williams-products/display-williams-products.component';
+import { DisplayNumarkProductsComponent } from './components/brands/display-numark-products/display-numark-products.component';
+import { DisplayYamahaProductsComponent } from './components/brands/display-yamaha-products/display-yamaha-products.component';
+import { DisplayEtudeProductsComponent } from './components/brands/display-etude-products/display-etude-products.component';
+import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
+import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
+import { AboutModule } from './components/about/about.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +49,20 @@ import { OrderCardComponent } from './components/order-card/order-card.component
     DisplayDjEquipmentProductsComponent,
     DisplayWoodwindsProductsComponent,
     DisplayOrdersComponent,
-    OrderCardComponent
+    OrderCardComponent,
+    DisplayDrumProductsComponent,
+    DisplayMartinProductsComponent,
+    DisplayFenderProductsComponent,
+    DisplayEpiphoneProductsComponent,
+    DisplayTaylorProductsComponent,
+    DisplayCasioProductsComponent,
+    DisplayRogueProductsComponent,
+    DisplayWilliamsProductsComponent,
+    DisplayNumarkProductsComponent,
+    DisplayYamahaProductsComponent,
+    DisplayEtudeProductsComponent,
+    DisplayMitchellProductsComponent,
+    DisplayPioneerProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +70,8 @@ import { OrderCardComponent } from './components/order-card/order-card.component
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
