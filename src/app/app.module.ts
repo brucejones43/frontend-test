@@ -31,7 +31,6 @@ import { AboutModule } from './components/about/about.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
-    AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
