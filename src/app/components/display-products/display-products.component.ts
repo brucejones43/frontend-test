@@ -3,6 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-display-products',
@@ -10,7 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./display-products.component.css']
 })
 export class DisplayProductsComponent implements OnInit {
-
+  protected ngUnsubscribe: Subject<void> = new Subject<void>();
   allProducts: Product[] = [];
   param: string = "";
 
@@ -67,7 +69,7 @@ export class DisplayProductsComponent implements OnInit {
        * Retrieve all products if and only if brand and category params are not provided
        */
       } else {
-        this.productService.getProducts().subscribe(
+        this.productService.getProducts().pipe(takeUntil(this.ngUnsubscribe)).subscribe(
           (resp) => this.allProducts = resp,
           (err) => {
             console.log(err);
@@ -114,6 +116,11 @@ export class DisplayProductsComponent implements OnInit {
       this.router.navigate(['login']);
     }
     
+  }
+
+  ngOnDestroy():void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
 }

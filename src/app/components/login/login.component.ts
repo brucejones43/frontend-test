@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
     password: new UntypedFormControl('', Validators.required)
   })
   
+  isAuthenticated: boolean = false;
 
   constructor(private authService: AuthService, private router: Router, private titleService: Title) { 
     this.titleService.setTitle("Login - Soul Sounds");
@@ -27,11 +28,18 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if(this.loginForm.valid){
       this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).subscribe(
-      () => {
+      (loggedInUser) => {
         this.authService.loggedIn=true;
         sessionStorage.setItem("loggedIn", "true");
+        sessionStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
       },
-      (err) => console.log(err),
+      (err) => {
+        console.log(err);
+        if (err.status === 400) {
+          this.loginForm.setErrors({unauthenticated: true});
+          console.log("Invalid Username/Password Combo.");
+        } 
+      },
       () => this.router.navigate(['home'])
     );
     }else{  
@@ -56,5 +64,9 @@ export class LoginComponent implements OnInit {
 
   get f(){
     return this.loginForm.controls;
+  }
+
+  get authenticated() {
+    return this.isAuthenticated;
   }
 }
