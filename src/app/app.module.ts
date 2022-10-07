@@ -33,7 +33,8 @@ import { DisplayPioneerProductsComponent } from './components/brands/display-pio
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 //import { AboutModule } from './components/about/about.module';
 import { OrdersComponent } from './components/orders/orders.component';
-
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     DisplayPioneerProductsComponent,
     LoadingSpinnerComponent
     OrdersComponent
-
+    HomeComponent
   ],
   imports: [
     BrowserModule,
