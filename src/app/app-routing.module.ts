@@ -22,6 +22,7 @@ import { DisplayYamahaProductsComponent } from './components/brands/display-yama
 import { DisplayEtudeProductsComponent } from './components/brands/display-etude-products/display-etude-products.component';
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
+import { OrdersComponent } from './components/orders/orders.component';
 // import { UserProfileComponent } from './components/userProfile/userProfile.component';
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
   { path: "products/brand/mitchell", component: DisplayMitchellProductsComponent },
   { path: "products/brand/pioneer", component: DisplayPioneerProductsComponent },
   { path: "cart", component: CartComponent },
-  { path: "checkout", component: CheckoutComponent }
+  { path: "checkout", component: CheckoutComponent },
+  { path: "orders", component: OrdersComponent}
 ];
 
 @NgModule({

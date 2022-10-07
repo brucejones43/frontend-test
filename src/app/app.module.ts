@@ -32,6 +32,8 @@ import { DisplayMitchellProductsComponent } from './components/brands/display-mi
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 //import { AboutModule } from './components/about/about.module';
+import { OrdersComponent } from './components/orders/orders.component';
+
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     DisplayMitchellProductsComponent,
     DisplayPioneerProductsComponent,
     LoadingSpinnerComponent
+    OrdersComponent
+
   ],
   imports: [
     BrowserModule,
