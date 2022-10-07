@@ -30,8 +30,10 @@ import { DisplayYamahaProductsComponent } from './components/brands/display-yama
 import { DisplayEtudeProductsComponent } from './components/brands/display-etude-products/display-etude-products.component';
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
-import { AboutModule } from './components/about/about.module';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+//import { AboutModule } from './components/about/about.module';
 import { OrdersComponent } from './components/orders/orders.component';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { OrdersComponent } from './components/orders/orders.component';
     DisplayEtudeProductsComponent,
     DisplayMitchellProductsComponent,
     DisplayPioneerProductsComponent,
+    LoadingSpinnerComponent
     OrdersComponent
+
   ],
   imports: [
     BrowserModule,
