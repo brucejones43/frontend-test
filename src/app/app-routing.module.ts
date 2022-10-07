@@ -22,14 +22,16 @@ import { DisplayYamahaProductsComponent } from './components/brands/display-yama
 import { DisplayEtudeProductsComponent } from './components/brands/display-etude-products/display-etude-products.component';
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
-// import { UserProfileComponent } from './components/userProfile/userProfile.component';
+import { userProfileComponent } from './components/userProfile/userProfile.component';
+import { wishListComponent } from './components/wishList/wishList.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "home", component: DisplayProductsComponent },
-  // { path: "account", component: UserProfileComponent },
+  { path: "account", component: userProfileComponent },
+  { path: "wishlist", component: wishListComponent },
   { path: "products/category/guitars", component: DisplayGuitarProductsComponent },
   { path: "products/category/keyboards", component: DisplayPianoProductsComponent },
   { path: "products/category/woodwinds", component: DisplayWoodwindsProductsComponent },

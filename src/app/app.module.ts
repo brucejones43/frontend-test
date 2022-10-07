@@ -31,17 +31,21 @@ import { DisplayEtudeProductsComponent } from './components/brands/display-etude
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { userProfileComponent } from './components/userProfile/userProfile.component';
+import { wishListComponent } from './components/wishList/wishList.component';
 //import { AboutModule } from './components/about/about.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent,
+    userProfileComponent,
     ProductCardComponent,
     CartComponent,
     CheckoutComponent,
+    wishListComponent,
     DisplayProductsComponent,
     DisplayGuitarProductsComponent,
     DisplayPianoProductsComponent,
