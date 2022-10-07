@@ -148,11 +148,21 @@
     </div>
     </div>
 
+    <div *ngIf="registerForm.errors?.noconnection" class="col justify-content-center my-3">
+      <p class="text-danger text-center m-0">Connection Error.</p>
+      <p class="text-danger text-center m-0">Please check your server connection and try again.</p>
+    </div>
+
+    <div *ngIf="registerForm.errors?.serverError" class="col justify-content-center my-3">
+      <p class="text-danger text-center m-0">Server Error.</p>
+      <p class="text-danger text-center m-0">The server encountered a problem while trying to process your request.</p>
+    </div>
+
     <div class="col">
       <div class="row justify-content-center">
         <button class="btn btn-primary px-5" (click)="onSubmit()">Register</button>
       </div>
-
+      <app-loading-spinner style="display: none" id="loaderSpinner"></app-loading-spinner>
       <div class="row justify-content-center mt-5">
         <p class="text-center m-0 light-foreground">Already have an account?</p>
       </div>

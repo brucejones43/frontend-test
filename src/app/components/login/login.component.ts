@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   
   onSubmit(): void {
     if(this.loginForm.valid){
+      showLoader();
       this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).subscribe(
       (loggedInUser) => {
         this.authService.loggedIn=true;
@@ -34,16 +35,31 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
       },
       (err) => {
+        hideLoader();
         console.log(err);
         if (err.status === 400) {
           this.loginForm.setErrors({unauthenticated: true});
           console.log("Invalid Username/Password Combo.");
-        } 
+        } else if (err.status === 0) {
+          this.loginForm.setErrors({noconnection: true})
+          console.log("Connection Error. Please check your connection and try again.");
+        } else if (err.status === 500) {
+          this.loginForm.setErrors({serverError: true});
+          console.log("Server Error. Encounter a problem while processing your request. Please try again.");
+        }
       },
-      () => this.router.navigate(['home'])
+      () => this.router.navigate(['home?category=Pianos'])
     );
     }else{  
       this.validateForm(this.loginForm);
+    }
+
+    function showLoader() {
+      document.getElementById("loaderSpinner")!.style.display = 'block';
+    }
+  
+    function hideLoader() {
+      document.getElementById("loaderSpinner")!.style.display = 'none';
     }
   }
 
