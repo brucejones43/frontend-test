@@ -1,25 +1,66 @@
-<div class="card light-background-2 p-2" style="width: 18rem;">
-    <img class="card-img-top" [src]="productInfo.image" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title light-foreground">{{productInfo.name}}</h5>
-      <!-- <p class="card-text light-foreground">{{productInfo.description}}</p> -->
+<!-- <div class="card light-background-2 p-2" style="width: 18rem;">
+  <img class="card-img-top" [src]="productInfo.image" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title light-foreground">{{productInfo.name}}</h5>
+    <p class="card-text light-foreground">{{productInfo.description}}</p>
+  </div>
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend light-foreground">
+      <span class="input-group-text" id="inputGroup-sizing-sm">$</span>
     </div>
-    <div class="input-group input-group-sm mb-3">
+    <input type="number" class="form-control" aria-label="Sizing example input" [value]="productInfo.price.toFixed(2)" aria-describedby="inputGroup-sizing-sm" disabled>
+  </div>
+  <div class="input-group input-group-sm mb-3">
       <div class="input-group-prepend light-foreground">
-        <span class="input-group-text" id="inputGroup-sizing-sm">$</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm">Quantity in Stock</span>
       </div>
-      <input type="number" class="form-control" aria-label="Sizing example input" [value]="productInfo.price.toFixed(2)" aria-describedby="inputGroup-sizing-sm" disabled>
+      <input type="number" class="form-control" aria-label="Sizing example input" [value]="productInfo.quantity" aria-describedby="inputGroup-sizing-sm" disabled>
     </div>
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend light-foreground">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Quantity in Stock</span>
-        </div>
-        <input type="number" class="form-control" aria-label="Sizing example input" [value]="productInfo.quantity" aria-describedby="inputGroup-sizing-sm" disabled>
-      </div>
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <button class="btn btn-outline-success" (click)="addToCart(productInfo)">Add to Cart</button>
+    </div>
+      
+  </div>
+</div> -->
+
+<div class="col-md-12 mb-4 mb-lg-0">
+  <div class="card light-background-2">
+    <div class="d-flex justify-content-center p-2">
+      <p class="lead mb-0 text-center light-foreground">{{productInfo.category}} - {{productInfo.brand}}</p>
+    </div>
+    <img [src]="productInfo.image"
+      class="card-img-top" alt="Laptop"/>
+      <hr class="my-0" />
     <div class="card-body">
-      <div class="row justify-content-center">
-        <button class="btn btn-outline-success" (click)="addToCart(productInfo)">Add to Cart</button>
+      <div class="d-flex justify-content-between mb-2">
+        <p class="small text-muted mb-0 light-foreground">Quantity Available: <span class="fw-bold">{{productInfo.quantity}}</span></p>
+        <div class="small ms-auto text-warning">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
       </div>
+      <hr class="my-0" />
+      <div class="d-flex justify-content-between my-2">
+        <h6 class="text-center mb-0 light-foreground">{{productInfo.name}}</h6>
+      </div>
+      <hr class="mb-1" />
+      <div class="row justify-content-center">
+        <h5 class="text-dark text-bold mb-0 light-foreground">${{productInfo.price.toFixed(2)}}</h5>
+      </div>
+      <hr class="mb-1" />
+      <div class="col mt-2">
+        <div class="row justify-content-center">
+          <button class="btn btn-primary" (click)="addToCart(productInfo)">Add to Cart</button>
+        </div>
+        <div class="row justify-content-center">
+          <button class="btn border-0 p-1 m-1 btn-outline-secondary" (click)="addToWishlist(productInfo)"><small class="light-foreground"><u>Add to Wishlist</u></small></button>
+        </div>
         
+      </div>
     </div>
   </div>
+</div>

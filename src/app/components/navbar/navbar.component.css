@@ -60,7 +60,7 @@
 .ball {
     width: 17px;
     height: 17px;
-    background-color: white;
+    background-color: #00e5ff;
     position: absolute;
     left: 3px;
     border-radius: 50%;
@@ -73,7 +73,7 @@
 }
 
 .fa-moon-o {
-    color: pink;
+    color: white;
 }
 
 .fa-sun-o {

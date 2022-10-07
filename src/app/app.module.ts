@@ -30,6 +30,7 @@ import { DisplayYamahaProductsComponent } from './components/brands/display-yama
 import { DisplayEtudeProductsComponent } from './components/brands/display-etude-products/display-etude-products.component';
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 //import { AboutModule } from './components/about/about.module';
 
 @NgModule({
@@ -58,7 +59,8 @@ import { DisplayPioneerProductsComponent } from './components/brands/display-pio
     DisplayYamahaProductsComponent,
     DisplayEtudeProductsComponent,
     DisplayMitchellProductsComponent,
-    DisplayPioneerProductsComponent
+    DisplayPioneerProductsComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
