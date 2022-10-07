@@ -3,7 +3,7 @@
     <div class="card text-center">
         <h5 class="card-header justify-content-center">Orders</h5>
         <div class="card-body">
-        <table class="table-light table-stripped table-hover table-responsive">
+        <table class="table-light table-striped table-responsive">
             <thead>
                 <tr>
                     <th class="col-sm-3">Order #</th>
@@ -25,7 +25,39 @@
         </div>
     </div>
 
-    <ng-template>
-
-    </ng-template>
 </div>
+
+
+<div class="modal fade" id="orderItemsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeOrderDetails()"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-striped" id="cart-table">
+                <thead>
+                  <tr class="light-foreground">
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-table-body">
+                    <tr class="light-foreground" *ngFor="let orderItems of cartItems;">
+                        <td>{{orderItems.product.id}}</td>
+                        <td>{{orderItems.product.name}}</td>
+                        <td>{{orderItems.product.quantity}}</td>
+                        <td>{{orderItems.product.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="closeOrderDetails()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
