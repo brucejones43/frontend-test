@@ -30,7 +30,9 @@ import { DisplayYamahaProductsComponent } from './components/brands/display-yama
 import { DisplayEtudeProductsComponent } from './components/brands/display-etude-products/display-etude-products.component';
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
-import { AboutModule } from './components/about/about.module';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+//import { AboutModule } from './components/about/about.module';
+import { OrdersComponent } from './components/orders/orders.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 
@@ -61,6 +63,8 @@ import { AboutComponent } from './components/about/about.component';
     DisplayEtudeProductsComponent,
     DisplayMitchellProductsComponent,
     DisplayPioneerProductsComponent,
+    LoadingSpinnerComponent
+    OrdersComponent
     HomeComponent
   ],
   imports: [
@@ -69,8 +73,8 @@ import { AboutComponent } from './components/about/about.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SweetAlert2Module,
-    AboutModule
+    SweetAlert2Module
+    // AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

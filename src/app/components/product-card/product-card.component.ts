@@ -109,6 +109,42 @@ export class ProductCardComponent implements OnInit{
       
   }
 
+  addToWishlist(product: Product): void {
+
+    let inCart = false;
+
+    this.products.forEach(
+      (element) => {
+        if(element.product == product){
+          ++element.quantity;
+          let cart = {
+            cartCount: this.cartCount + 1,
+            products: this.products,
+            totalPrice: this.totalPrice + product.price
+          };
+          this.productService.setCart(cart);
+          inCart=true;
+          return;
+        };
+      }
+    );
+
+    if(inCart == false){
+      let newProduct = {
+        product: product,
+        quantity: 1
+      };
+      this.products.push(newProduct);
+      let cart = {
+        cartCount: this.cartCount + 1,
+        products: this.products,
+        totalPrice: this.totalPrice + product.price
+      }
+      this.productService.setCart(cart);
+    }
+      
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

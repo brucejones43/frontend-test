@@ -16,6 +16,11 @@ export class NavbarComponent implements OnInit{
   cartCount!: number;
   subscription!: Subscription;
 
+  userName!: string;
+  usernameSub!: Subscription;
+
+  loggedInUser!: string;
+
   // This is getting child elements rendered with ngIf
   @ViewChildren('navLinkLight') navLinkLightBtns!: QueryList<ElementRef>;
 
@@ -26,7 +31,9 @@ export class NavbarComponent implements OnInit{
       (cart) => this.cartCount = cart.cartCount
     );
 
-
+    let loggedInUser = JSON.parse(sessionStorage.loggedInUser || "{}");
+    
+    this.userName = `${loggedInUser.firstName} ${loggedInUser.lastName}`;
   }
 
   retrieveByBrand(brand: string) {
@@ -76,6 +83,8 @@ export class NavbarComponent implements OnInit{
 
       let lightButtonPrimary = document.getElementsByClassName("btn-primary");
       let lightButtonSuccess = document.getElementsByClassName("btn-outline-success");
+
+      let lightBackgroundGlass = document.getElementsByClassName("light-background-glass");
       
       
       for (let i = 0; i < lightBackground.length; i++) {
@@ -102,6 +111,10 @@ export class NavbarComponent implements OnInit{
         lightButtonSuccess[i].classList.add("btn-outline-success-dark");
       }
 
+      for (let i = 0; i < lightBackgroundGlass.length; i++) {
+        lightBackgroundGlass[i].classList.add("dark-background-glass");
+      }
+
       let lightNavLinks = this.navLinkLightBtns.toArray()
       //var lightNavLinks = document.getElementsByClassName("nav-link-light");
       for (let i = 0; i < lightNavLinks.length; i++) {
@@ -120,6 +133,7 @@ export class NavbarComponent implements OnInit{
   logout() {
     this.authService.logout();
     sessionStorage.setItem("loggedIn", "false");
+    sessionStorage.removeItem("loggedInUser");
     this.router.navigate(['login']);
   }
   
@@ -158,6 +172,7 @@ export class NavbarComponent implements OnInit{
     let lightButtonSuccess = document.getElementsByClassName("btn-outline-success");
 
     var darkBackground = document.getElementsByClassName("dark-background");
+    let lightBackgroundGlass = document.getElementsByClassName("light-background-glass");
 
 
     for (let i = 0; i < lightBackground.length; i++) {
@@ -184,12 +199,15 @@ export class NavbarComponent implements OnInit{
       lightButtonSuccess[i].classList.toggle("btn-outline-success-dark");
     }
 
+    for (let i = 0; i < lightBackgroundGlass.length; i++) {
+      lightBackgroundGlass[i].classList.toggle("dark-background-glass");
+    }
 
-    console.log(this.navLinkLightBtns.toArray());
+    //console.log(this.navLinkLightBtns.toArray());
     let lightNavLinks = this.navLinkLightBtns.toArray()
     //var lightNavLinks = document.getElementsByClassName("nav-link-light");
     for (let i = 0; i < lightNavLinks.length; i++) {
-      console.log(lightNavLinks.length);
+      //console.log(lightNavLinks.length);
       lightNavLinks[i].nativeElement.classList.toggle("nav-link-dark");
     }
   }

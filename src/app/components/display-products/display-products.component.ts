@@ -3,6 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-display-products',
@@ -10,9 +12,10 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./display-products.component.css']
 })
 export class DisplayProductsComponent implements OnInit {
-
+  protected ngUnsubscribe: Subject<void> = new Subject<void>();
   allProducts: Product[] = [];
   param: string = "";
+  title: string = "All Products";
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router, private titleService: Title) { 
     this.titleService.setTitle("Products - Soul Sounds");
@@ -30,9 +33,13 @@ export class DisplayProductsComponent implements OnInit {
         let category = this.activatedRoute.snapshot.queryParams['category'];
         console.log(category);
         this.titleService.setTitle(`${category} Products - Soul Sounds`);
+        this.title = `${category}`;
 
         this.productService.getProductsByCategory(category).subscribe(
-          (resp) => this.allProducts = resp,
+          (resp) => {
+            hideLoader();
+            this.allProducts = resp;
+          },
           (err) => {
             console.log(err);
             if (err.status == 401) {
@@ -51,9 +58,13 @@ export class DisplayProductsComponent implements OnInit {
         let brand = this.activatedRoute.snapshot.queryParams['brand'];
         console.log(brand);
         this.titleService.setTitle(`${brand} Products - Soul Sounds`);
+        this.title = `Products by ${brand} Brand`;
 
         this.productService.getProductsByBrand(brand).subscribe(
-          (resp) => this.allProducts = resp,
+          (resp) => {
+            hideLoader(); 
+            this.allProducts = resp
+          },
           (err) => {
             console.log(err);
             if (err.status == 401) {
@@ -67,8 +78,11 @@ export class DisplayProductsComponent implements OnInit {
        * Retrieve all products if and only if brand and category params are not provided
        */
       } else {
-        this.productService.getProducts().subscribe(
-          (resp) => this.allProducts = resp,
+        this.productService.getProducts().pipe(takeUntil(this.ngUnsubscribe)).subscribe(
+          (resp) => {
+            hideLoader(); 
+            this.allProducts = resp
+          },
           (err) => {
             console.log(err);
             if (err.status == 401) {
@@ -114,6 +128,14 @@ export class DisplayProductsComponent implements OnInit {
       this.router.navigate(['login']);
     }
     
+    function hideLoader() {
+      document.getElementById("loaderSpinner")!.style.display = 'none';
+    }
+  }
+
+  ngOnDestroy():void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
 }

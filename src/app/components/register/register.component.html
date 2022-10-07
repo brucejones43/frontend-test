@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
-<form id="register-form" [formGroup]="registerForm">
-     <h3 class="register-header light-foreground">Create New Account</h3>
-    <div class="form-group">
+<form class="p-5 light-background-glass col-10 col-lg-6" id="register-form" [formGroup]="registerForm">
+     <h3 class="register-header light-foreground mb-4">Welcome. Create New Account</h3>
+    <div class="form-group mb-4">
       <div class="input-group">  
         <div class="input-group-prepend-xs">
           <span class="input-group-text" id="basic-addon1"> First Name</span>
@@ -11,8 +11,8 @@
        <small *ngIf="f.fname?.invalid && f.fname?.touched" class="text-danger">Please enter a first name.</small>
     </div>
 
-  <div class="form-group">
-    <div class="input-group ">  
+  <div class="form-group mb-4">
+    <div class="input-group">  
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Last Name</span>
       </div> 
@@ -20,8 +20,8 @@
      </div>
      <small *ngIf="f.lname?.invalid && f.lname?.touched" class="text-danger">Please enter a last name.</small>
   </div>
-    <div class="form-group">
-      <div class="input-group ">  
+    <div class="form-group mb-4">
+      <div class="input-group">  
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope "></i></span>
         </div> 
@@ -29,7 +29,7 @@
        </div>
       <small *ngIf="f.email?.invalid && f.email?.touched" class="text-danger">Please enter a email address.</small>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-4">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fa fa-lock "></i></span>
@@ -38,7 +38,7 @@
       </div>
       <small *ngIf="f.password?.invalid && f.password?.touched" class="text-danger">Please enter a password.</small>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-4">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">Street Address</span>
@@ -47,7 +47,7 @@
       </div>
       <small *ngIf="f.street_add?.invalid && f.street_add?.touched" class="text-danger">Please enter Street Address</small>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-4">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">Apt,Suite,Unit</span>
@@ -58,7 +58,7 @@
 
     <div class="row">
     <div class="col"> 
-    <div class="form-group">
+    <div class="form-group mb-4">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">City</span>
@@ -70,7 +70,7 @@
     </div>
     
     <div class="col">
-      <div class="form-group">
+      <div class="form-group mb-4">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">State</span>
@@ -136,17 +136,40 @@
     </div>
 
     <div class="col">
-      <div class="form-group">
+      <div class="form-group mb-4">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">Zipcode</span>
           </div>
-          <input type="text" class="form-control" formControlName="zipcode" id="exampleInputZipcode" placeholder="Zipcode">
+          <input type="text" class="form-control" formControlName="zipcode" id="exampleInputZipcode" placeholder="Zip">
         </div>
         <small *ngIf="f.zipcode?.invalid && f.zipcode?.touched" class="text-danger">Please enter a Zipcode</small>
       </div>
     </div>
     </div>
-    <button class="btn btn-primary" (click)="onSubmit()">Register</button>
+
+    <div *ngIf="registerForm.errors?.noconnection" class="col justify-content-center my-3">
+      <p class="text-danger text-center m-0">Connection Error.</p>
+      <p class="text-danger text-center m-0">Please check your server connection and try again.</p>
+    </div>
+
+    <div *ngIf="registerForm.errors?.serverError" class="col justify-content-center my-3">
+      <p class="text-danger text-center m-0">Server Error.</p>
+      <p class="text-danger text-center m-0">The server encountered a problem while trying to process your request.</p>
+    </div>
+
+    <div class="col">
+      <div class="row justify-content-center">
+        <button class="btn btn-primary px-5" (click)="onSubmit()">Register</button>
+      </div>
+      <app-loading-spinner style="display: none" id="loaderSpinner"></app-loading-spinner>
+      <div class="row justify-content-center mt-5">
+        <p class="text-center m-0 light-foreground">Already have an account?</p>
+      </div>
+      <div class="row justify-content-center">
+        <button class="btn btn-outline-secondary px-5 mt-1" [routerLink]="['/login']">Login</button>
+      </div>
+    </div>
+    
 </form>
 
