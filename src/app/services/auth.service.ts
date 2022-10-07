@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   authUrl: string = `${environment.baseUrl}/auth`;
+  userUrl: string = `${environment.baseUrl}/user`; 
+
   loggedIn: boolean = false;
 
   constructor(private http: HttpClient) { }
@@ -30,4 +32,9 @@ export class AuthService {
     const payload = {firstName: firstName, lastName: lastName, email: email, password: password, street_address: street_address, apt:apt, city:city, state:state, zipcode:zipcode};
     return this.http.post<any>(`${this.authUrl}/register`, payload, {headers: environment.headers});
   }
+  userForm(firstname: string, lastname: string, email: string, password: string, streetaddress: string, city:string, state:string, zipcode:number,profile:string): Observable<any> {
+    const payload = {firstname: firstname, lastname: lastname, email: email, password: password, streetaddress: streetaddress, city:city, state:state, zipcode:zipcode,profile:profile};
+    return this.http.put<any>(`${this.userUrl}/update`, payload, {headers: environment.headers});
+  }
 }
+
