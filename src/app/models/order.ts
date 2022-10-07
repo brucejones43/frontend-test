@@ -1,14 +1,18 @@
+import { OrderStatus } from "./orderStatus";
+
+
 export class Order {
     id: number;
     total: number;
-    orderDate: Date;
-    status: string;
+    orderPlacedDate: Date;
+    status: OrderStatus;
 
-    constructor(id: number, total: number, orderDate: Date, status: string){
+    constructor(id: number, total: number, orderPlacedDate: Date, status: OrderStatus){
         this.id = id;
         this.total = total;
-        this.orderDate = orderDate;
+        this.orderPlacedDate = orderPlacedDate;
         this.status = status;
     }
+    
 
 }

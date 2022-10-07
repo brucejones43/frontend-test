@@ -17,8 +17,6 @@ import { DisplayGuitarProductsComponent } from './components/categories/display-
 import { DisplayPianoProductsComponent } from './components/categories/display-piano-products/display-piano-products.component';
 import { DisplayDjEquipmentProductsComponent } from './components/categories/display-dj-equipment-products/display-dj-equipment-products.component';
 import { DisplayWoodwindsProductsComponent } from './components/categories/display-woodwinds-products/display-woodwinds-products.component';
-import { DisplayOrdersComponent } from './components/display-orders/display-orders.component';
-import { OrderCardComponent } from './components/order-card/order-card.component';
 import { DisplayDrumProductsComponent } from './components/categories/display-drum-products/display-drum-products.component';
 import { DisplayMartinProductsComponent } from './components/brands/display-martin-products/display-martin-products.component';
 import { DisplayFenderProductsComponent } from './components/brands/display-fender-products/display-fender-products.component';
@@ -33,6 +31,7 @@ import { DisplayEtudeProductsComponent } from './components/brands/display-etude
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
 import { AboutModule } from './components/about/about.module';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -48,8 +47,6 @@ import { AboutModule } from './components/about/about.module';
     DisplayPianoProductsComponent,
     DisplayDjEquipmentProductsComponent,
     DisplayWoodwindsProductsComponent,
-    DisplayOrdersComponent,
-    OrderCardComponent,
     DisplayDrumProductsComponent,
     DisplayMartinProductsComponent,
     DisplayFenderProductsComponent,
@@ -62,7 +59,8 @@ import { AboutModule } from './components/about/about.module';
     DisplayYamahaProductsComponent,
     DisplayEtudeProductsComponent,
     DisplayMitchellProductsComponent,
-    DisplayPioneerProductsComponent
+    DisplayPioneerProductsComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -70,8 +68,8 @@ import { AboutModule } from './components/about/about.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SweetAlert2Module,
-    AboutModule
+    SweetAlert2Module
+    // AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

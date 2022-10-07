@@ -4,7 +4,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { DisplayDjEquipmentProductsComponent } from './components/categories/display-dj-equipment-products/display-dj-equipment-products.component';
 import { DisplayGuitarProductsComponent } from './components/categories/display-guitar-products/display-guitar-products.component';
-import { DisplayOrdersComponent } from './components/display-orders/display-orders.component';
 import { DisplayPianoProductsComponent } from './components/categories/display-piano-products/display-piano-products.component';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { DisplayWoodwindsProductsComponent } from './components/categories/display-woodwinds-products/display-woodwinds-products.component';
@@ -23,6 +22,7 @@ import { DisplayYamahaProductsComponent } from './components/brands/display-yama
 import { DisplayEtudeProductsComponent } from './components/brands/display-etude-products/display-etude-products.component';
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
+import { OrdersComponent } from './components/orders/orders.component';
 // import { UserProfileComponent } from './components/userProfile/userProfile.component';
 
 const routes: Routes = [
@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: "products/brand/pioneer", component: DisplayPioneerProductsComponent },
   { path: "cart", component: CartComponent },
   { path: "checkout", component: CheckoutComponent },
-  { path: "orders", component: DisplayOrdersComponent}
+  { path: "orders", component: OrdersComponent}
 ];
 
 @NgModule({
