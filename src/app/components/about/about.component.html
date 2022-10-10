@@ -1,15 +1,16 @@
 <div *ngIf = "images && images.length > 0" class = "slider-module-container">
     <img *ngFor = "let image of images; let i = index" 
-    src = "image.imageSrc" alt = "image.imageAlt">
+    src = "image.imageSrc" alt = "image.imageAlt"
     [ngClass] = "{'image-active': selectedIndex === i}"
     class = "fade"
     >
 
     <div *ngIf = "indicators" class = "carousel-dot-container">
         <span *ngFor = "let dot of images; let i = index" 
-            class = "dot">
+            class = "dot"
             [ngClass] = "{'active': selectedIndex === i}"
             (click) = "selectedImage(i)"
+            >
         </span>
     </div>
 
@@ -30,10 +31,10 @@
 <br>
 <h1>Team Soul Sounds</h1>
 
-<app-carousel [images] = "images"
+<app-about [images] = "images"
     [autoSlide] = "true">
 
-</app-carousel>
+</app-about>
 
 <!-- if wanting to hide button indicators
 <app-carousel [images] = "images"

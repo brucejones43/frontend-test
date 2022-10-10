@@ -112,7 +112,7 @@
                     <!--<a class="dropdown-item" [routerLink]="['/cart']">Cart</a> -->
                 </div>
             </li>
-            <form *ngIf="isLoggedIn" class="form-inline">
+            <form id="navForm" *ngIf="isLoggedIn" class="form-inline">
                 <button class="btn btn-light" [routerLink]="['/cart']">
                     Cart
                     <span class="badge badge-info">{{cartCount}}</span>

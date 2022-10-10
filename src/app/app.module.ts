@@ -31,21 +31,22 @@ import { DisplayEtudeProductsComponent } from './components/brands/display-etude
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+//import { AboutModule } from './components/about/about.module';
+import { OrdersComponent } from './components/orders/orders.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 import { userProfileComponent } from './components/userProfile/userProfile.component';
 import { wishListComponent } from './components/wishList/wishList.component';
-//import { AboutModule } from './components/about/about.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    userProfileComponent,
+    NavbarComponent,
     ProductCardComponent,
     CartComponent,
     CheckoutComponent,
-    wishListComponent,
     DisplayProductsComponent,
     DisplayGuitarProductsComponent,
     DisplayPianoProductsComponent,
@@ -64,7 +65,12 @@ import { wishListComponent } from './components/wishList/wishList.component';
     DisplayEtudeProductsComponent,
     DisplayMitchellProductsComponent,
     DisplayPioneerProductsComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    OrdersComponent,
+    HomeComponent,
+    AboutComponent,
+    userProfileComponent,
+    wishListComponent
   ],
   imports: [
     BrowserModule,

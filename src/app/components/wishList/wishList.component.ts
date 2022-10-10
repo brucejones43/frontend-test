@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/models/product';
 import { AuthService } from 'src/app/services/auth.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-wishList',
@@ -9,8 +12,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./wishList.component.css']
 })
 export class wishListComponent implements OnInit {
+  wishlistProducts: Product[] = [];
 
-  constructor(@Inject(DOCUMENT) public document: Document) { }
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router, private titleService: Title) { }
 
   ngOnInit(): void {
   }

@@ -24,6 +24,7 @@ import { DisplayMitchellProductsComponent } from './components/brands/display-mi
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
 import { userProfileComponent } from './components/userProfile/userProfile.component';
 import { wishListComponent } from './components/wishList/wishList.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: "home", component: DisplayProductsComponent },
   { path: "account", component: userProfileComponent },
   { path: "wishlist", component: wishListComponent },
+  { path: "orders", component: OrdersComponent },
   { path: "products/category/guitars", component: DisplayGuitarProductsComponent },
   { path: "products/category/keyboards", component: DisplayPianoProductsComponent },
   { path: "products/category/woodwinds", component: DisplayWoodwindsProductsComponent },
