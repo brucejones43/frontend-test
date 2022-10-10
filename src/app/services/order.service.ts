@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -23,7 +23,8 @@ export class OrderService {
     return this.http.post<any>(environment.baseUrl+this.orderUrl+"/purchase",{headers: environment.headers});
   }
 
-  public getOrderItem(): Observable<CartItem[]>{
-    return this.http.get<CartItem[]>(environment.baseUrl+this.cartUrl+"/items", {headers: environment.headers, withCredentials: environment.withCredentials});
+  public getOrderItem(cartId: number): Observable<CartItem[]>{
+    
+    return this.http.get<CartItem[]>(environment.baseUrl+this.cartUrl+`/order-items?cartId=${cartId}`, {headers: environment.headers, withCredentials: environment.withCredentials});
   } 
 }
