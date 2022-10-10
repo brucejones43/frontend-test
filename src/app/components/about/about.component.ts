@@ -12,26 +12,26 @@ interface aboutImage {
 })
 export class AboutComponent implements OnInit {
 
-    @Input() images: aboutImage[] = []
-    @Input indicators = true;
-    @Input () controls = true;
-    @Input() autoSlide = false;
-    @Input() slideInterval = 3000; //default to 3 second interval between slides
+    // @Input() images: aboutImage[] = []
+    // @Input indicators = true;
+    // @Input () controls = true;
+    // @Input() autoSlide = false;
+    // @Input() slideInterval = 3000; //default to 3 second interval between slides
 
 
     selectedIndex = 0
 
     ngOnInit(): void {
-      if(this.autoSlide){
-        autoSlideImages();
-      }
+      // if(this.autoSlide){
+      //   autoSlideImages();
+      // }
     }
 
     // Changes slide in every 3 second interval
     autoSlideImages(): void {
-      setInterval(() => {
-        this.onNextClick();
-      }, this.slideInterval);
+      // setInterval(() => {
+      //   this.onNextClick();
+      // }, this.slideInterval);
     }
 
     // sets index of image on dot/indicator click
