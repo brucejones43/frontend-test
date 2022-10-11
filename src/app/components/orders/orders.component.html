@@ -16,7 +16,7 @@
                 <tr *ngFor="let order of orders">
                     <td>{{order.id}}</td>
                     <td>{{order.orderPlacedDate}}</td>
-                    <td>${{order.total}}</td>
+                    <td>${{order.total.toFixed(2)}}</td>
                     <td>{{order.status.status}}</td>
                     <td><button class="btn btn-primary" (click)="viewOrderDetails(order.cart.id)">view order</button></td>
                 </tr>
@@ -29,3 +29,40 @@
 
     </ng-template>
 </div>
+
+
+<div class="modal fade" id="orderItemsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable  mw-100 w-75">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeOrderDetails()"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-striped" id="cart-table">
+                <thead>
+                  <tr class="light-foreground">
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-table-body">
+                    <tr class="light-foreground" *ngFor="let orderItems of cartItems;">
+                        <td><img [src]= "orderItems.product.image"></td>
+                        <td>{{orderItems.product.name}}</td>
+                        <td>{{orderItems.quantity}}</td>
+                        <td>{{orderItems.product.price.toFixed(2)}}</td>
+                        <td>{{orderItems.product.description.substring(0,250)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="closeOrderDetails()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
