@@ -15,32 +15,33 @@ export class AboutComponent implements OnInit {
     @Input() images: aboutImage[] = [
       {
         imageSrc:
-          '/src/assets/images/david.jfif',
+          '../../../assets/images/david.jfif',
         imageAlt: 'david',
       },
       {
         imageSrc:
-          '/src/assets/images/jerry.jfif',
+          '../../../assets/images/jerry.jfif',
         imageAlt: 'jerry',
       },
       {
         imageSrc:
-          '/src/assets/images/tristan.jfif',
+          '../../../assets/images/tristan.jfif',
         imageAlt: 'tristan',
       },
       {
         imageSrc:
-          '/src/assets/images/bruce.jfif',
+          '../../../assets/images/bruce.jfif',
         imageAlt: 'bruce',
       },
       {
         imageSrc:
-          '/src/assets/images/joel.jfif',
+          '../../../assets/images/joel.jfif',
         imageAlt: 'joel',
       },
       {
         imageSrc:
-          '/src/assets/images/salvator.jfif',
+          '../../../assets/images/salvator.jfif',
+
         imageAlt: 'salvator',
       },
       {

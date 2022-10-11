@@ -1,3 +1,4 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
@@ -18,7 +19,6 @@ declare var window: any;
 export class OrdersComponent implements OnInit {
 
   orders: Order[]=[];
-
 
   
   cartItems: CartItem[] =[];
@@ -68,7 +68,6 @@ export class OrdersComponent implements OnInit {
         () => console.log("Orders retrieved!")
       );
 
-
     }
 
   }
@@ -79,5 +78,6 @@ export class OrdersComponent implements OnInit {
 
   closeOrderDetails(){
     this.formModal.hide();
+
   }
 }
