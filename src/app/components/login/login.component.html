@@ -1,14 +1,62 @@
-<img src="../../../assets/images/rev-logo.png" width="30%" height="30%" alt="Revature">
-<form id="login-form" [formGroup]="loginForm">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">Ensure you enter the correct email</small>
+<app-navbar></app-navbar>
+
+<form class="p-5 light-background-glass col-10 col-lg-6" id="login-form" [formGroup]="loginForm">
+  <div class="row justify-content-center mb-4">
+    <img class="p-0" src="../../../assets/images/soulsounds-logo.png" width="160px" alt="Soul Sounds Logo">
+  </div>
+  
+    <h3 class="login-header light-foreground mb-5">Log in to Soul Sounds</h3>
+
+    <div class="form-group mb-4">
+      <div class="input-group">  
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope "></i></span>
+        </div> 
+        <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
+      </div>
+      <small *ngIf="f.email?.invalid && f.email?.touched" class="text-danger">Please enter a valid email address.</small>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
+    
+    <div class="form-group mb-4">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-lock "></i></span>
+        </div>
+        <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Enter a Password">
+      </div>
+      <small *ngIf="f.password?.invalid && f.password?.touched" class="text-danger">Please enter a password.</small>
     </div>
-    <button class="btn btn-primary" (click)="onSubmit()">Login</button>
-    <button class="btn btn-primary" [routerLink]="['/register']">Register</button>
+
+    <div *ngIf="loginForm.errors?.unauthenticated" class="row justify-content-center mt-3">
+      <p class="text-danger">Invalid Username/Password. Please try again.</p>
+    </div>
+
+    <div *ngIf="loginForm.errors?.noconnection" class="col justify-content-center mt-3">
+      <p class="text-danger text-center m-0">Connection Error.</p>
+      <p class="text-danger text-center m-0">Please check your server connection and try again.</p>
+    </div>
+
+    <div *ngIf="loginForm.errors?.serverError" class="col justify-content-center my-3">
+      <p class="text-danger text-center m-0">Server Error.</p>
+      <p class="text-danger text-center m-0">The server encountered a problem while trying to process your request.</p>
+    </div>
+
+    <div class="col align-items-center justify-content-center mt-4">
+      <div class="row align-items-center justify-content-center">
+        <button class="btn btn-primary px-5" (click)="onSubmit()">Login</button>
+      </div>
+      <app-loading-spinner style="display: none" id="loaderSpinner"></app-loading-spinner>
+      <div class="row justify-content-center mt-5">
+        <p class="text-center m-0 light-foreground">Don't have an account?</p>
+      </div>
+      <div class="row justify-content-center">
+        <button class="btn btn-outline-secondary px-5 mt-1" [routerLink]="['/register']">Register</button>
+      </div>
+      
+      
+      
+      
+      
+    </div>
+    
 </form>

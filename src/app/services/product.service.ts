@@ -42,6 +42,14 @@ export class ProductService {
     return this.http.get<Product[]>(environment.baseUrl+this.productUrl, {headers: environment.headers, withCredentials: environment.withCredentials});
   }
 
+  public getProductsByBrand(brand :String): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.baseUrl+this.productUrl+`/brand?brand=${brand}`, {headers: environment.headers, withCredentials: environment.withCredentials});
+  }
+
+  public getProductsByCategory(category :String): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.baseUrl+this.productUrl+`/category?category=${category}`, {headers: environment.headers, withCredentials: environment.withCredentials});
+  }
+
   public getSingleProduct(id: number): Observable<Product> {
     return this.http.get<Product>(environment.baseUrl+id);
   }
