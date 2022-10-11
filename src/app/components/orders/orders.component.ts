@@ -18,12 +18,10 @@ declare var window: any;
 })
 export class OrdersComponent implements OnInit {
 
-  orders: Order[]=[];
-
-  
+  orders: Order[]=[];  
   cartItems: CartItem[] =[];
   
-  
+  loading: any;
 
   formModal:any;
 
@@ -41,22 +39,7 @@ export class OrdersComponent implements OnInit {
 
     if (sessionStorage.getItem("loggedIn") === "true") {
       this.orderService.getAllOrders().subscribe(
-        (resp) => {this.orders = resp 
-          this.orders.forEach((element)=>{
-            let cartId = element.cart.id
-            this.orderService.getOrderItem(cartId).subscribe(
-              (resp) => this.cartItems = resp,
-              (err) =>{
-                console.log(err);
-                if (err.status == 401) {
-                  sessionStorage.setItem("loggedIn", "false");
-                  this.router.navigate(['login']);
-              }
-            },
-            () => console.log("OrdersItems retrieved!")
-            );
-          })
-        }
+        (resp) => this.orders = resp 
         ,
         (error) => {
           console.log(error);
@@ -69,15 +52,40 @@ export class OrdersComponent implements OnInit {
       );
 
     }
-
   }
 
-  viewOrderDetails(){
+  viewOrderDetails(cart: Cart){
     this.formModal.show();
-  }
+    showLoader();
+    this.orderService.getOrderItem(cart.id).subscribe(
+      (resp)=>{ console.log(resp)
+        hideLoader();
+      this.cartItems = resp},
+      (err)=>{
+        console.log(err);
+        if (err.status == 401) {
+          sessionStorage.setItem("loggedIn", "false");
+          this.router.navigate(['login']);
+        } 
+      },
+      () => console.log("OrderItems Retrieved")
+    );
+    
+    function showLoader() {
+        document.getElementById("loaderSpinner")!.style.display = 'block';
+    }
+    
+    function hideLoader() {
+        document.getElementById("loaderSpinner")!.style.display = 'none';
+    } 
+}
 
-  closeOrderDetails(){
-    this.formModal.hide();
+closeOrderDetails(){
+  this.formModal.hide();
+  location.reload();
 
-  }
+}
+
+
+
 }

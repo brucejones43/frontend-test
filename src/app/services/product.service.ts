@@ -75,4 +75,13 @@ export class ProductService {
     const payload = {productId: product.id, quantity: 1};
     return this.http.post<any>(environment.baseUrl+this.cartUrl+`/add-item`, payload, {headers: environment.headers, withCredentials: environment.withCredentials});
   }
+
+  public removeItem(item: CartItem): Observable<any>{
+    const payload = {id: item.id, productId: item.product.id, quantity: item.quantity}
+    return this.http.delete<any>(environment.baseUrl+ this.cartUrl+`/delete-item`, {headers: environment.headers, withCredentials: environment.withCredentials, body: payload} )
+  }
+
+  public emptyCart(): Observable<any> {
+    return this.http.delete<any>(environment.baseUrl+ this.cartUrl+`/empty`, {headers: environment.headers, withCredentials: environment.withCredentials} );
+  }
 }
