@@ -23,10 +23,12 @@ import { DisplayEtudeProductsComponent } from './components/brands/display-etude
 import { DisplayMitchellProductsComponent } from './components/brands/display-mitchell-products/display-mitchell-products.component';
 import { DisplayPioneerProductsComponent } from './components/brands/display-pioneer-products/display-pioneer-products.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { HomeComponent } from './components/home/home.component';
 // import { UserProfileComponent } from './components/userProfile/userProfile.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/login", pathMatch: "full" },
+  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "home", component: HomeComponent},
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "home", component: DisplayProductsComponent },

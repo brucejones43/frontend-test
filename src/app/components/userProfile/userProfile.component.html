@@ -1,68 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Account</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="C:\Users\varad\OneDrive\Desktop\e-commerce-frontend-angular-main\html\userProfile.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</head>
-<style> 
-    input[type=text] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: none;
-      background-color: #d2d7ed;
-      color: white;
-    }
-    input[type=number] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: none;
-      background-color: #d2d7ed;
-      color: white;
-    }
-    input[type=email] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: none;
-      background-color: #d2d7ed;
-      color: white;
-    }
-    input[id="state"] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: none;
-      background-color: #d2d7ed;
-      color: white;
-    }
-    </style>
 <body>
-    
-    <div class="container-fluid">
+<app-navbar></app-navbar>
+  <div class="container-fluid">
         <div class="d-flex flex-column justify-content-center"></div>
         <h1 class="d-flex justify-content-center my-5">User Profile</h1>
         <div id="mainInfoDiv" class="d-flex justify-content-center">
@@ -75,35 +15,35 @@
                     <div class="row">
                         <div class="col mb-3">
                             <label for="firstname" class="form-label">Firstname</label>
-                            <input type="text" class="form-control" id="firstname"
+                            <input type="text" class="form-control" formControlName="firstname" id="firstname"
                                 placeholder="Enter your first name...">
                         </div>
                         <div class="col mb-3">
                             <label for="lastname" class="form-label">Lastname</label>
-                            <input type="text" class="form-control" id="lastname" placeholder="Enter your last name...">
+                            <input type="text" class="form-control" formControlName="lastname" id="lastname" placeholder="Enter your last name...">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email address...">
+                        <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter your email address...">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="password" placeholder="Enter your password...">
+                        <input type="text" class="form-control" formControlName="password" id="password" placeholder="Enter your password...">
                     </div>
                     <div class="mb-3">
                         <label for="streetaddress" class="form-label">Street address</label>
-                        <input type="text" class="form-control" id="streetaddress"
+                        <input type="text" class="form-control" formControlName="streetaddress" id="streetaddress"
                             placeholder="Enter street address...">
                     </div>
                     <div class="row">
                         <div class="col mb-3">
                             <label for="city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="city" placeholder="Enter city...">
+                            <input type="text" class="form-control" formControlName="city" id="city" placeholder="Enter city...">
                         </div>
                         <div class="col mb-3">
                             <label for="state" class="form-label">State</label>
-                            <select class="form-control" id="state" name="state" required>
+                            <select class="form-control" formControlName="state" id="state" name="state" required>
                                 <option value="" disabled selected hidden>Select State</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AL">Alabama</option>
@@ -161,13 +101,13 @@
                         </div>
                         <div class="col mb-3">
                             <label for="zipcode" class="form-label">Zip code</label>
-                            <input type="number" class="form-control" id="zipcode" placeholder="Enter Zip code...">
+                            <input type="number" class="form-control" formControlName="zipcode" id="zipcode" placeholder="Enter Zip code...">
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Profile Picture</label>
-                        <input class="form-control form-control-sm" type="file" id="formFile">
+                        <input class="form-control form-control-sm" type="file"formControlName="profile" id="formFile" accept=".png,.jpg,.jpeg">
                     </div>
                     <div class="row justify-content-center mt-4">
                         <button id="submit" class="btn btn-outline-success">Update</button>
