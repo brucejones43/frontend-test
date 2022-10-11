@@ -1,48 +1,127 @@
-<div *ngIf = "images && images.length > 0" class = "slider-module-container">
-    <img *ngFor = "let image of images; let i = index" 
-    [src] = "image.imageSrc" [alt] = "image.imageAlt"
-    [ngClass] = "{'image-active': selectedIndex === i}"
-    class = "fade"
-    >
+<!DOCTYPE html>
+<html lang="en">
+    <app-navbar></app-navbar>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us</title>
+        <link rel="stylesheet" href="../about/about.component.css">
+        
+    </head>
 
-    <div *ngIf = "indicators" class = "carousel-dot-container">
-        <span *ngFor = "let dot of images; let i = index" 
-            class = "dot"
-            [ngClass] = "{'active': selectedIndex === i}"
-            (click) = "selectedImage(i)"
-            >
-        </span>
-    </div>
+    <body>
+        <header>
 
-    <button *ngIf = "controls" class="btn-carousel btn-prev"
-        (click) = "onPrevClick()">
-        <i class="fas fa-arrow-circle-left icon-carousel icon-prev">
-        </i>
-    </button>
+        </header>
+            <div class="about-section">
+                <h1>About Soul Sounds</h1>
+                    <p>Soul Sounds started as an initiative from music lovers and non-music lovers alike. By bringing together different talents, we are able to provide our customers with both a passionate display of musical products and with a reliable way to procure them. Our team members are proud to serve you. </p>
+                    <p><em>Thank you for choosing us.</em></p>
+            </div>
+    
+            <h2 style="text-align:center">Our Team</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                    <img src="../../../assets/images/david.jfif" alt="David" class="center">
+                    <div class="container">
+                        <h2>David Winters</h2>
+                        <p class="title">Scrum Leader</p>
+                        <p><em>Team Jerry Forever</em></p>
+                    </div>
+                </div>
+            </div>
 
-    <button *ngIf = "controls" class="btn-carousel btn-next"
-        (click) = "onNextClick()">
-        <i class="fas fa-arrow-circle-right icon-carousel icon-next">
-        </i>
-    </button>
-</div>
-<body>
-    <br>
-    <br>
-    <h1>Team Soul Sounds</h1>
+            <div class="column">
+                <div class="card">
+                    <img src="../../../assets/images/bruce.jfif" alt="Bruce" class="center">
+                    <div class="container">
+                        <h2>Bruce Jones</h2>
+                        <p class="title">Vice Scrum Leader/Frontend Lead</p>
+                        <p><em>Research is the GPS to discovery</em></p>
+                    </div>
+                </div>
+            </div>
 
-    <app-about [images] = "images"
-        [autoSlide] = "true">
+            <div class="column">
+                <div class="card">
+                    <img src="../../../assets/images/jerry.jfif" alt="Jerry" class="center">
+                    <div class="container">
+                        <h2>Jerry Reeves</h2>
+                        <p class="title">Frontend Member</p>
+                        <p><em>Team Jerry Forever</em></p>
+                    </div>
+                </div>
+            </div>
 
-    </app-about>
-</body>
+            <div class="column">
+                <div class="card">
+                    <img src="../../../assets/images/varada.jfif" alt="Varada" class="center">
+                    <div class="container">
+                        <h2>Varada Krishnadas</h2>
+                        <p class="title">Frontend Member</p>
+                        <p><em>Greatness is a choice</em></p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="column">
+                <div class="card">
+                    <img src="../../../assets/images/sam.jfif" alt="Sam" class="center">
+                    <div class="container">
+                        <h2>Samantha Freitas</h2>
+                        <p class="title">Frontend Member</p>
+                        <p><em>I have not failed. I’ve just found 10,000 ways that won’t work</em></p>
+                    </div>
+                </div>
+            </div>   
+    
+            <div class="column">
+                <div class="card">
+                    <img src="../../../assets/images/raphael.jfif" alt="Raphael" class="center">
+                    <div class="container">
+                        <h2>Raphael Gakau</h2>
+                        <p class="title">Full-Stack Member</p>
+                        <p><em>Speech is silver, silence is golden</em></p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="column">
+                <div class="card">
+                    <img src="../../../assets/images/tristan.jfif" alt="Tristan" class="center">
+                    <div class="container">
+                        <h2>Tristan</h2>
+                        <p class="title">Backend Leader</p>
+                        <p><em>Team Jerry Forever</em></p>
+                    </div>
+                </div>
+            </div>
 
-<!-- if wanting to hide button indicators
-<app-carousel [images] = "images"
-    [autoSlide] = "true"
-    [indicators] = "false">
+            <div class="column">
+                <div class="card">
+                    <img src="../../../assets/images/salvador.jfif" alt="Salvator" class="center">
+                    <div class="container">
+                        <h2>Salvator</h2>
+                        <p class="title">Backend Member</p>
+                        <p><em>Team Jerry Forever</em></p>
+                    </div>
+                </div>
+            </div>
 
-</app-carousel>
+            <div class="column">
+                <div class="card">
+                <img src="../../../assets/images/joel.jfif" alt="Joel" class="center">
+                    <div class="container">
+                        <h2>Joel</h2>
+                        <p class="title">Backend Member</p>
+                        <p><em>Team Jerry Forever</em></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </body>
 
--->
+    <app-footer></app-footer>
+</html>
