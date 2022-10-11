@@ -5,16 +5,17 @@ import { OrderStatus } from "./orderStatus";
 export class Order {
     id: number;
     total: number;
-    cart: Cart;
     orderPlacedDate: Date;
     status: OrderStatus;
+    cart: Cart;
 
-    constructor(id: number, total: number, cart: Cart, orderPlacedDate: Date, status: OrderStatus){
+    constructor(id: number, total: number, orderPlacedDate: Date, status: OrderStatus, cart: Cart){
         this.id = id;
         this.total = total;
-        this.cart = cart;
         this.orderPlacedDate = orderPlacedDate;
         this.status = status;
+        this.cart = cart;
+
     }
     
 

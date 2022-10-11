@@ -54,7 +54,8 @@ const routes: Routes = [
   { path: "products/brand/mitchell", component: DisplayMitchellProductsComponent },
   { path: "products/brand/pioneer", component: DisplayPioneerProductsComponent },
   { path: "cart", component: CartComponent },
-  { path: "checkout", component: CheckoutComponent }
+  { path: "checkout", component: CheckoutComponent },
+  { path: "orders", component: OrdersComponent}
 ];
 
 @NgModule({
