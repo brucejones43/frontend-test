@@ -41,6 +41,7 @@ export class AboutComponent implements OnInit {
       {
         imageSrc:
           '../../../assets/images/salvator.jfif',
+
         imageAlt: 'salvator',
       },
       {

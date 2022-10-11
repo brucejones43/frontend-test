@@ -3,7 +3,8 @@
     <div class="card text-center">
         <h5 class="card-header justify-content-center">Orders</h5>
         <div class="card-body">
-        <table class="table-light table-stripped table-hover table-responsive">
+        <table class="table-light table-striped table-responsive">
+
             <thead>
                 <tr>
                     <th class="col-sm-3">Order #</th>
@@ -18,16 +19,15 @@
                     <td>{{order.orderPlacedDate}}</td>
                     <td>${{order.total.toFixed(2)}}</td>
                     <td>{{order.status.status}}</td>
-                    <td><button class="btn btn-primary" (click)="viewOrderDetails(order.cart.id)">view order</button></td>
+
+                    <td><button class="btn btn-primary" (click)="viewOrderDetails()">view order</button></td>
+
                 </tr>
             </tbody>
         </table>
         </div>
     </div>
 
-    <ng-template>
-
-    </ng-template>
 </div>
 
 

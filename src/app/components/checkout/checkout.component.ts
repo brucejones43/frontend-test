@@ -4,6 +4,8 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Order } from 'src/app/models/order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -11,7 +13,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-
+  
   products: {
     product: Product,
     quantity: number
@@ -33,7 +35,7 @@ export class CheckoutComponent implements OnInit {
     country: new UntypedFormControl('', Validators.required)
   });
 
-  constructor(private productService: ProductService, private router: Router, private titleService: Title) { 
+  constructor(private productService: ProductService, private orderService: OrderService, private router: Router, private titleService: Title) { 
     this.titleService.setTitle("Checkout - Soul Sounds");
   }
 
@@ -58,6 +60,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.orderService.submitOrder().subscribe(
+      (resp) => console.log(resp),
+      (err) => console.log(err),
+      () => {
+        
+      }
+    );
     this.products.forEach(
       (element) => {
         const id = element.product.id;

@@ -27,11 +27,9 @@ export class userProfileComponent implements OnInit {
     state: new UntypedFormControl('', Validators.required),
     zipcode: new UntypedFormControl('', [Validators.required, Validators.minLength(5)]),
     profile: new UntypedFormControl('')
+
   })
   
-
-
-
   constructor(private authService: AuthService, private router: Router, private titleService: Title) { }
 
   ngOnInit(): void {
@@ -95,7 +93,7 @@ export class userProfileComponent implements OnInit {
         }
       );
     
-    }else{
+    } else{
       this.validateForm(this.updateForm);
     }
 
@@ -106,7 +104,6 @@ export class userProfileComponent implements OnInit {
     function hideLoader() {
       document.getElementById("loaderSpinner")!.style.display = 'none';
     }
-
   }
 
   validateForm(untypedFormGroup: UntypedFormGroup){
@@ -159,5 +156,4 @@ export class userProfileComponent implements OnInit {
     return array;
   }
 }
-
 
