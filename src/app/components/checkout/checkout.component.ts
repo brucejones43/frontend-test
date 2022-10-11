@@ -82,6 +82,7 @@ export class CheckoutComponent implements OnInit {
         () => {
           let cart = {
             cartCount: 0,
+            totalQuantity: 0,
             products: [],
             totalPrice: 0.00
           };

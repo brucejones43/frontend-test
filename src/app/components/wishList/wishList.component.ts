@@ -50,6 +50,7 @@ export class wishListComponent implements OnInit {
 
     } else {
       sessionStorage.setItem("loggedIn", "false");
+      sessionStorage.removeItem("loggedInUser");
       this.router.navigate(['login']);
     }
 

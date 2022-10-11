@@ -24,14 +24,31 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     
-    
-    this.productService.getCart().subscribe(
+    showLoader();
+    this.productService.getUserCart().subscribe(
       (cart) => {
-        this.products = cart.products;
-        this.products.forEach(
-          (element) => this.cartProducts.push(element.product)
-        );
-        this.totalPrice = cart.totalPrice;
+        console.log(cart);
+        this.productService.getCartItems().subscribe(
+          (items) => {
+            hideLoader();
+            for (let item of items) {
+              this.products.push({product: item.product, quantity: item.quantity});
+            }
+          },
+          (error) => {
+            hideLoader();
+            console.log(error);
+          },
+          () => {
+            hideLoader();
+            // this.products = cart.products;
+            this.products.forEach(
+              (element) => this.cartProducts.push(element.product)
+            );
+            this.totalPrice = cart.totalPrice;
+          }
+        )
+        
       },
       (err) => {
         console.log(err);
@@ -42,11 +59,20 @@ export class CartComponent implements OnInit {
       }
     );
 
+    function showLoader() {
+      document.getElementById("loaderSpinner")!.style.display = 'block';
+    }
+  
+    function hideLoader() {
+      document.getElementById("loaderSpinner")!.style.display = 'none';
+    }
+
   }
 
   emptyCart(): void {
     let cart = {
       cartCount: 0,
+      totalQuantity: 0,
       products: [],
       totalPrice: 0.00
     };
