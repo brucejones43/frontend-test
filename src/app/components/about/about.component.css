@@ -1,12 +1,4 @@
 /* about body section start */
-
-.banner {
-    height: 3vh;
-    width: 100%;
-    background: rgb(173, 150, 155);
-    color: #fff;
-  }
-  
   .wrapper {
     max-width: 100%;
     overflow: hidden;
@@ -16,6 +8,7 @@
     margin: 0;
     margin: 0 auto;
   }
+
   div {
     margin: 0 auto;
   }
@@ -51,17 +44,20 @@
   .container {
     padding: 0 16px;
     margin: 0 auto;
+    text-align: center;
   }
   
   .container::after, .row::after {
     content: "";
     clear: both;
     display: table;
+    text-align: center;
   }
   
   .title {
     color: #6f7182;
     margin: 0 auto;
+    text-align: center;
   }
   
   .button {
