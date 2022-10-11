@@ -12,54 +12,7 @@ interface aboutImage {
 })
 export class AboutComponent implements OnInit {
 
-    @Input() images: aboutImage[] = [
-      {
-        imageSrc:
-          '../../../assets/images/david.jfif',
-        imageAlt: 'david',
-      },
-      {
-        imageSrc:
-          '../../../assets/images/jerry.jfif',
-        imageAlt: 'jerry',
-      },
-      {
-        imageSrc:
-          '../../../assets/images/tristan.jfif',
-        imageAlt: 'tristan',
-      },
-      {
-        imageSrc:
-          '../../../assets/images/bruce.jfif',
-        imageAlt: 'bruce',
-      },
-      {
-        imageSrc:
-          '../../../assets/images/joel.jfif',
-        imageAlt: 'joel',
-      },
-      {
-        imageSrc:
-          '../../../assets/images/salvator.jfif',
-
-        imageAlt: 'salvator',
-      },
-      {
-        imageSrc:
-          '/src/assets/images/raphael.jfif',
-        imageAlt: 'raphael',
-      },
-      {
-        imageSrc:
-          '/src/assets/images/varada.jfif',
-        imageAlt: 'varada',
-      },
-      {
-        imageSrc:
-          '/src/assets/images/sam.jfif',
-        imageAlt: 'sam',
-      },
-  ];
+    @Input() images: aboutImage[] = [];
     @Input() indicators = true;
     @Input () controls = true;
     @Input() autoSlide = false;
@@ -107,49 +60,50 @@ export class AboutComponent implements OnInit {
     // Commenting out to see if above fix works, below was original code
     /*images = [
         {
-          imageSrc:
-            '/src/assets/images/david.jfif',
-          imageAlt: 'david',
-        },
-        {
-          imageSrc:
-            '/src/assets/images/jerry.jfif',
-          imageAlt: 'jerry',
-        },
-        {
-          imageSrc:
-            '/src/assets/images/tristan.jfif',
-          imageAlt: 'tristan',
-        },
-        {
-          imageSrc:
-            '/src/assets/images/bruce.jfif',
-          imageAlt: 'bruce',
-        },
-        {
-          imageSrc:
-            '/src/assets/images/joel.jfif',
-          imageAlt: 'joel',
-        },
-        {
-          imageSrc:
-            '/src/assets/images/salvator.jfif',
-          imageAlt: 'salvator',
-        },
-        {
-          imageSrc:
-            '/src/assets/images/raphael.jfif',
-          imageAlt: 'raphael',
-        },
-        {
-          imageSrc:
-            '/src/assets/images/varada.jfif',
-          imageAlt: 'varada',
-        },
-        {
-          imageSrc:
-            '/src/assets/images/sam.jfif',
-          imageAlt: 'sam',
-        },
+        imageSrc:
+          '../../../assets/images/david.jfif',
+        imageAlt: 'david',
+      },
+      {
+        imageSrc:
+          '../../../assets/images/jerry.jfif',
+        imageAlt: 'jerry',
+      },
+      {
+        imageSrc:
+          '../../../assets/images/tristan.jfif',
+        imageAlt: 'tristan',
+      },
+      {
+        imageSrc:
+          '../../../assets/images/bruce.jfif',
+        imageAlt: 'bruce',
+      },
+      {
+        imageSrc:
+          '../../../assets/images/joel.jfif',
+        imageAlt: 'joel',
+      },
+      {
+        imageSrc:
+          '../../../assets/images/salvator.jfif',
+
+        imageAlt: 'salvator',
+      },
+      {
+        imageSrc:
+          '../../../assets/images/raphael.jfif',
+        imageAlt: 'raphael',
+      },
+      {
+        imageSrc:
+          '../../../assets/images/varada.jfif',
+        imageAlt: 'varada',
+      },
+      {
+        imageSrc:
+          '../../../assets/images/sam.jfif',
+        imageAlt: 'sam',
+      },
     ] */
 }
