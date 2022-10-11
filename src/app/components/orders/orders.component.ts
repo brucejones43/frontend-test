@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
 import { CartItem } from 'src/app/models/cartItem';
 import { Order } from 'src/app/models/order';
-import { OrderStatus } from 'src/app/models/orderStatus';
-import { Product } from 'src/app/models/product';
 import { OrderService } from 'src/app/services/order.service';
-import { ProductService } from 'src/app/services/product.service';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
+
 
 declare var window: any;
 
@@ -27,7 +26,7 @@ export class OrdersComponent implements OnInit {
 
 
 
-  constructor(private orderService: OrderService, private productService: ProductService ,private router: Router) { }
+  constructor(private orderService: OrderService,private router: Router) { }
 
   ngOnInit(): void {
 
@@ -86,6 +85,14 @@ closeOrderDetails(){
 
 }
 
-
-
 }
+
+
+
+function showLoader() {
+    document.getElementById("loaderSpinner")!.style.display = 'block';
+}
+
+function hideLoader() {
+    document.getElementById("loaderSpinner")!.style.display = 'none';
+} 

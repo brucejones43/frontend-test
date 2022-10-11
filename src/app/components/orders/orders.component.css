@@ -12,3 +12,10 @@ img{
     left:0;
 }
 
+#loaderSpinner{
+    position:relative;
+    top: 90%;
+    left: 130%;
+    margin-bottom: 75px;
+}
+
