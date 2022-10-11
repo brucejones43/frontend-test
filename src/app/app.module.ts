@@ -36,7 +36,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { userProfileComponent } from './components/userProfile/userProfile.component';
 import { wishListComponent } from './components/wishList/wishList.component';
-import { AboutModule } from './components/about/about.module';
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
@@ -71,7 +70,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     userProfileComponent,
     wishListComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -79,8 +79,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SweetAlert2Module,
-    AboutModule
+    SweetAlert2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
