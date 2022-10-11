@@ -20,7 +20,7 @@
                     <td>${{order.total}}</td>
                     <td>{{order.status.status}}</td>
 
-                    <td><button class="btn btn-primary" (click)="viewOrderDetails()">view order</button></td>
+                    <td><button class="btn btn-primary" (click)="viewOrderDetails(order.cart)">view order</button></td>
 
                 </tr>
             </tbody>
@@ -32,7 +32,7 @@
 
 
 <div class="modal fade" id="orderItemsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable  mw-100 w-75">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  mw-100 w-75">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
@@ -49,6 +49,7 @@
                   </tr>
                 </thead>
                 <tbody id="cart-table-body">
+                  <app-loading-spinner style="display: none" id="loaderSpinner"></app-loading-spinner>
                     <tr class="light-foreground" *ngFor="let orderItems of cartItems;">
                         <td><img [src]= "orderItems.product.image"></td>
                         <td>{{orderItems.product.name}}</td>
