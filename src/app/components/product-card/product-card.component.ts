@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductCardComponent implements OnInit{
 
   cartCount!: number;
+  totalQuantity!: number;
   products: {
     product: Product,
     quantity: number
@@ -23,13 +24,30 @@ export class ProductCardComponent implements OnInit{
   constructor(private productService: ProductService) { }
   
   ngOnInit(): void {
-    this.subscription = this.productService.getCart().subscribe(
-      (cart) => {
-        this.cartCount = cart.cartCount;
-        this.products = cart.products;
-        this.totalPrice = cart.totalPrice;
-      }
-    );
+    // this.subscription = this.productService.getUserCart().subscribe(
+    //   (cart) => {
+    //     // this.productService.getCartItems().subscribe(
+    //     //   (items) => {
+    //     //     for (let item of items) {
+    //     //       this.products.push({product: item.product, quantity: item.quantity});
+    //     //     }
+    //     //   },
+    //     //   (error) => {
+    //     //     console.log(error);
+    //     //   },
+    //     //   () => {
+    //     //     // // this.products = cart.products;
+    //     //     // this.products.forEach(
+    //     //     //   (element) => this.cartProducts.push(element.product)
+    //     //     // );
+    //     //     this.totalPrice = cart.totalPrice;
+    //     //     this.cartCount = cart.totalQuantity;
+    //     //   }
+    //     // )
+    //     // this.products = cart.products;
+    //     // this.totalPrice = cart.totalPrice;
+    //   }
+    // );
 
     if (localStorage.getItem("mode") === "dark") {
       
@@ -74,37 +92,81 @@ export class ProductCardComponent implements OnInit{
   }
 
   addToCart(product: Product): void {
-
     let inCart = false;
 
     this.products.forEach(
       (element) => {
         if(element.product == product){
           ++element.quantity;
-          let cart = {
-            cartCount: this.cartCount + 1,
-            products: this.products,
-            totalPrice: this.totalPrice + product.price
-          };
-          this.productService.setCart(cart);
-          inCart=true;
-          return;
+          // let cart = {
+          //   cartCount: this.cartCount + 1,
+          //   totalQuantity: this.totalQuantity +1,
+          //   products: this.products,
+          //   totalPrice: this.totalPrice + product.price
+          // };
+          // this.productService.setCart(cart);
+          this.productService.addCartItem(product).subscribe(
+            () => console.log("Item Added to Cart"),
+            (error) => {
+              console.log(error);
+            }, 
+            () => {
+              this.productService.getUserCart().subscribe(
+                (cart) => {
+                  this.productService.setCart(cart);
+                },
+                (error) => {
+                  console.log(error);
+                },
+                () => {
+                  inCart=true;
+                  return;
+                }
+              );
+              
+            }
+          );
+          
         };
       }
     );
 
     if(inCart == false){
-      let newProduct = {
-        product: product,
-        quantity: 1
-      };
-      this.products.push(newProduct);
-      let cart = {
-        cartCount: this.cartCount + 1,
-        products: this.products,
-        totalPrice: this.totalPrice + product.price
-      }
-      this.productService.setCart(cart);
+      // let newProduct = {
+      //   product: product,
+      //   quantity: 1
+      // };
+      // this.products.push(newProduct);
+      // let cart = {
+      //   cartCount: this.cartCount + 1,
+      //   totalQuantity: this.totalQuantity +1,
+      //   products: this.products,
+      //   totalPrice: this.totalPrice + product.price
+      // }
+      // this.productService.setCart(cart);
+      this.productService.addCartItem(product).subscribe(
+        () => {
+          console.log("Item Added to Cart");
+          this.productService.getUserCart().subscribe(
+            (cart) => {
+              this.productService.setCart(cart);
+              console.log(cart.totalQuantity);
+            },
+            (error) => {
+              console.log(error);
+            },
+            () => {
+
+            }
+          );
+        } ,
+        (error) => {
+          console.log(error);
+        }, 
+        () => {
+          
+        }
+      );
     }
       
   }
@@ -119,6 +181,7 @@ export class ProductCardComponent implements OnInit{
           ++element.quantity;
           let cart = {
             cartCount: this.cartCount + 1,
+            totalQuantity: this.totalQuantity +1,
             products: this.products,
             totalPrice: this.totalPrice + product.price
           };
@@ -137,6 +200,7 @@ export class ProductCardComponent implements OnInit{
       this.products.push(newProduct);
       let cart = {
         cartCount: this.cartCount + 1,
+        totalQuantity: this.totalQuantity +1,
         products: this.products,
         totalPrice: this.totalPrice + product.price
       }
@@ -146,7 +210,7 @@ export class ProductCardComponent implements OnInit{
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

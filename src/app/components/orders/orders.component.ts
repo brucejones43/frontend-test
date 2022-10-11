@@ -17,9 +17,7 @@ declare var window: any;
 })
 export class OrdersComponent implements OnInit {
 
-  orders: Order[]=[];
-
-  
+  orders: Order[]=[];  
   cartItems: CartItem[] =[];
   
   loading: any;
@@ -56,31 +54,37 @@ export class OrdersComponent implements OnInit {
   }
 
   viewOrderDetails(cart: Cart){
-      this.formModal.show();
-      showLoader();
-      this.orderService.getOrderItem(cart.id).subscribe(
-        (resp)=>{ console.log(resp)
-          hideLoader();
-        this.cartItems = resp},
-        (err)=>{
-          console.log(err);
-          if (err.status == 401) {
-            sessionStorage.setItem("loggedIn", "false");
-            this.router.navigate(['login']);
-          } 
-        },
-        () => console.log("OrderItems Retrieved")
-      );
-      
-  }
+    this.formModal.show();
+    showLoader();
+    this.orderService.getOrderItem(cart.id).subscribe(
+      (resp)=>{ console.log(resp)
+        hideLoader();
+      this.cartItems = resp},
+      (err)=>{
+        console.log(err);
+        if (err.status == 401) {
+          sessionStorage.setItem("loggedIn", "false");
+          this.router.navigate(['login']);
+        } 
+      },
+      () => console.log("OrderItems Retrieved")
+    );
+    
+    function showLoader() {
+        document.getElementById("loaderSpinner")!.style.display = 'block';
+    }
+    
+    function hideLoader() {
+        document.getElementById("loaderSpinner")!.style.display = 'none';
+    } 
+}
 
-  closeOrderDetails(){
-    this.formModal.hide();
-    location.reload();
+closeOrderDetails(){
+  this.formModal.hide();
+  location.reload();
 
-  }
+}
 
-  
 }
 
 
