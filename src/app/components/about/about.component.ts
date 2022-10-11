@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface aboutImage {
     imageSrc: string;
@@ -12,7 +12,7 @@ interface aboutImage {
 })
 export class AboutComponent implements OnInit {
 
-    @Input() images: aboutImage[] = [];
+    constructor() {}
 
     ngOnInit(): void {
     }
