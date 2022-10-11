@@ -29,6 +29,7 @@ export class OrdersComponent implements OnInit {
           console.log(error);
           if (error.status == 401) {
             sessionStorage.setItem("loggedIn", "false");
+            sessionStorage.removeItem("loggedInUser");
             this.router.navigate(['login']);
           }
         },

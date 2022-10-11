@@ -25,15 +25,17 @@ import { DisplayPioneerProductsComponent } from './components/brands/display-pio
 import { userProfileComponent } from './components/userProfile/userProfile.component';
 import { wishListComponent } from './components/wishList/wishList.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/login", pathMatch: "full" },
+  { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "home", component: DisplayProductsComponent },
+  { path: "home", component: HomeComponent },
   { path: "account", component: userProfileComponent },
   { path: "wishlist", component: wishListComponent },
   { path: "orders", component: OrdersComponent },
+  { path: "products", component: DisplayProductsComponent },
   { path: "products/category/guitars", component: DisplayGuitarProductsComponent },
   { path: "products/category/keyboards", component: DisplayPianoProductsComponent },
   { path: "products/category/woodwinds", component: DisplayWoodwindsProductsComponent },

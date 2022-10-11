@@ -3,8 +3,10 @@ import { FormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { WishlistItem } from 'src/app/models/wishlistitem';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-wishList',
@@ -12,11 +14,52 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./wishList.component.css']
 })
 export class wishListComponent implements OnInit {
+  wishlistItems: WishlistItem[] = [];
   wishlistProducts: Product[] = [];
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router, private titleService: Title) { }
+  title: string = "Wishlist";
+
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router, private titleService: Title, private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Wishlist - Soul Sounds Shop");
+    let loggedInUser = JSON.parse(sessionStorage.loggedInUser || "{}");
+
+    if (Object.keys(loggedInUser).length !== 0) {
+      this.title = `${loggedInUser.firstName}'s Wishlist`;
+
+      showLoader();
+      this.wishlistService.getWishlistProducts().subscribe(
+        (resp) => {
+          console.log(resp);
+          for (let item of resp) {
+            this.wishlistProducts.push(item.product);
+          }
+          hideLoader(); 
+        },
+        (err) => {
+          hideLoader(); 
+          console.log(err);
+          if (err.status == 401) {
+            sessionStorage.setItem("loggedIn", "false");
+            this.router.navigate(['login']);
+          } 
+        },
+        () => console.log("Products Retrieved")
+      )
+
+    } else {
+      sessionStorage.setItem("loggedIn", "false");
+      this.router.navigate(['login']);
+    }
+
+    function showLoader() {
+      document.getElementById("loaderSpinner")!.style.display = 'block';
+    }
+
+    function hideLoader() {
+      document.getElementById("loaderSpinner")!.style.display = 'none';
+    }
   }
 
 }

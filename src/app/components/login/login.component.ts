@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           console.log("Server Error. Encounter a problem while processing your request. Please try again.");
         }
       },
-      () => this.router.navigate(['home'])
+      () => this.router.navigate(['account'])
     );
     }else{  
       this.validateForm(this.loginForm);
