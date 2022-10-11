@@ -22,4 +22,21 @@ describe('AboutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`images has default value`, () => {
+    expect(component.images).toEqual([]);
+  });
+
+  it(`selectedIndex has default value`, () => {
+    expect(component.selectedIndex).toEqual(0);
+  });
+
+  describe('ngOnInit', () => {
+    it('makes expected calls', () => {
+      spyOn(component, 'autoSlideImages').and.callThrough();
+      component.ngOnInit();
+      expect(component.autoSlideImages).toHaveBeenCalled();
+    });
+  });
+  
 });
