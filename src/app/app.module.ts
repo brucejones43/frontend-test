@@ -37,6 +37,7 @@ import { AboutComponent } from './components/about/about.component';
 import { userProfileComponent } from './components/userProfile/userProfile.component';
 import { wishListComponent } from './components/wishList/wishList.component';
 import { AboutModule } from './components/about/about.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { AboutModule } from './components/about/about.module';
     OrdersComponent,
     HomeComponent,
     userProfileComponent,
-    wishListComponent
+    wishListComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
