@@ -13,10 +13,54 @@ interface aboutImage {
 export class AboutComponent implements OnInit {
 
     @Input() images: aboutImage[] = [];
-    @Input() indicators = true;
-    @Input () controls = true;
-    @Input() autoSlide = false;
-    @Input() slideInterval = 3000; //default to 3 second interval between slides
+
+    @Input() images: aboutImage[] = [
+      {
+        imageSrc:
+          '/src/assets/images/david.jfif',
+        imageAlt: 'david',
+      },
+      {
+        imageSrc:
+          '/src/assets/images/jerry.jfif',
+        imageAlt: 'jerry',
+      },
+      {
+        imageSrc:
+          '/src/assets/images/tristan.jfif',
+        imageAlt: 'tristan',
+      },
+      {
+        imageSrc:
+          '/src/assets/images/bruce.jfif',
+        imageAlt: 'bruce',
+      },
+      {
+        imageSrc:
+          '/src/assets/images/joel.jfif',
+        imageAlt: 'joel',
+      },
+      {
+        imageSrc:
+          '/src/assets/images/salvator.jfif',
+        imageAlt: 'salvator',
+      },
+      {
+        imageSrc:
+          '/src/assets/images/raphael.jfif',
+        imageAlt: 'raphael',
+      },
+      {
+        imageSrc:
+          '/src/assets/images/varada.jfif',
+        imageAlt: 'varada',
+      },
+      {
+        imageSrc:
+          '/src/assets/images/sam.jfif',
+        imageAlt: 'sam',
+      },
+  ];
 
 
     selectedIndex = 0
@@ -25,13 +69,14 @@ export class AboutComponent implements OnInit {
       if(this.autoSlide){
         this.autoSlideImages();
       }
+
     }
 
     // Changes slide in every 3 second interval
     autoSlideImages(): void {
-      setInterval(() => {
-        this.onNextClick();
-      }, this.slideInterval);
+      // setInterval(() => {
+      //   this.onNextClick();
+      // }, this.slideInterval);
     }
 
     // sets index of image on dot/indicator click
