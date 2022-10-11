@@ -35,6 +35,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { OrdersComponent } from './components/orders/orders.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
+import { userProfileComponent } from './components/userProfile/userProfile.component';
+import { wishListComponent } from './components/wishList/wishList.component';
 
 @NgModule({
   declarations: [
@@ -63,9 +65,12 @@ import { AboutComponent } from './components/about/about.component';
     DisplayEtudeProductsComponent,
     DisplayMitchellProductsComponent,
     DisplayPioneerProductsComponent,
-    LoadingSpinnerComponent
-    OrdersComponent
-    HomeComponent
+    LoadingSpinnerComponent,
+    OrdersComponent,
+    HomeComponent,
+    AboutComponent,
+    userProfileComponent,
+    wishListComponent
   ],
   imports: [
     BrowserModule,
