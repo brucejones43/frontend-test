@@ -51,7 +51,7 @@
                 <tbody id="cart-table-body">
                   <app-loading-spinner style="display: none" id="loaderSpinner"></app-loading-spinner>
                     <tr class="light-foreground" *ngFor="let orderItems of cartItems;">
-                        <td><img [src]= "orderItems.product.image"></td>
+                        <td><img [src]= "orderItems.product.image" alt="Image not found"></td>
                         <td>{{orderItems.product.name}}</td>
                         <td>{{orderItems.quantity}}</td>
                         <td>{{orderItems.product.description}}</td>
