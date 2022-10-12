@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute ,Router} from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { DisplayProductsComponent } from './display-products.component';
 
