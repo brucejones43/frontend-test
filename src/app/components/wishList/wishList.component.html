@@ -3,11 +3,13 @@
     <h1 class="text-center light-foreground mb-5">{{title}}</h1>
     <app-loading-spinner id="loaderSpinner"></app-loading-spinner>
     <div class="row align-items-start">
-       <div class="col" *ngFor="let product of wishlistProducts">
-            <app-product-card
+        <div class="col mb-2" *ngFor="let product of wishlistProducts">
+            <div class="row justify-content-center">
+                <app-product-card
                 class="wishListItem"
                 [productInfo]="product"
             ></app-product-card> 
+            </div>
         </div> 
     </div>
 </div>
