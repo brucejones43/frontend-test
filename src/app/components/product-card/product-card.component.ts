@@ -26,24 +26,24 @@ export class ProductCardComponent implements OnInit{
   ngOnInit(): void {
     // this.subscription = this.productService.getUserCart().subscribe(
     //   (cart) => {
-    //     this.productService.getCartItems().subscribe(
-    //       (items) => {
-    //         for (let item of items) {
-    //           this.products.push({product: item.product, quantity: item.quantity});
-    //         }
-    //       },
-    //       (error) => {
-    //         console.log(error);
-    //       },
-    //       () => {
-    //         // // this.products = cart.products;
-    //         // this.products.forEach(
-    //         //   (element) => this.cartProducts.push(element.product)
-    //         // );
-    //         this.totalPrice = cart.totalPrice;
-    //         this.cartCount = cart.totalQuantity;
-    //       }
-    //     )
+    //     // this.productService.getCartItems().subscribe(
+    //     //   (items) => {
+    //     //     for (let item of items) {
+    //     //       this.products.push({product: item.product, quantity: item.quantity});
+    //     //     }
+    //     //   },
+    //     //   (error) => {
+    //     //     console.log(error);
+    //     //   },
+    //     //   () => {
+    //     //     // // this.products = cart.products;
+    //     //     // this.products.forEach(
+    //     //     //   (element) => this.cartProducts.push(element.product)
+    //     //     // );
+    //     //     this.totalPrice = cart.totalPrice;
+    //     //     this.cartCount = cart.totalQuantity;
+    //     //   }
+    //     // )
     //     // this.products = cart.products;
     //     // this.totalPrice = cart.totalPrice;
     //   }
@@ -111,9 +111,19 @@ export class ProductCardComponent implements OnInit{
               console.log(error);
             }, 
             () => {
-              console.log(this.totalQuantity);
-              inCart=true;
-              return;
+              this.productService.getUserCart().subscribe(
+                (cart) => {
+                  this.productService.setCart(cart);
+                },
+                (error) => {
+                  console.log(error);
+                },
+                () => {
+                  inCart=true;
+                  return;
+                }
+              );
+              
             }
           );
           
@@ -135,12 +145,26 @@ export class ProductCardComponent implements OnInit{
       // }
       // this.productService.setCart(cart);
       this.productService.addCartItem(product).subscribe(
-        () => console.log("Item Added to Cart"),
+        () => {
+          console.log("Item Added to Cart");
+          this.productService.getUserCart().subscribe(
+            (cart) => {
+              this.productService.setCart(cart);
+              console.log(cart.totalQuantity);
+            },
+            (error) => {
+              console.log(error);
+            },
+            () => {
+
+            }
+          );
+        } ,
         (error) => {
           console.log(error);
         }, 
         () => {
-          console.log(this.totalQuantity);
+          
         }
       );
     }
@@ -186,7 +210,7 @@ export class ProductCardComponent implements OnInit{
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

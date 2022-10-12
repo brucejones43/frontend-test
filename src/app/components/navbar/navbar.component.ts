@@ -30,7 +30,10 @@ export class NavbarComponent implements OnInit{
   
   ngOnInit(): void {
     this.subscription = this.productService.getUserCart().subscribe(
-      (cart) => this.cartCount = cart.totalQuantity
+      (cart) => {
+        this.cartCount = cart.totalQuantity;
+        console.log(cart); 
+      }
     );
 
     let loggedInUser = JSON.parse(sessionStorage.loggedInUser || "{}");
