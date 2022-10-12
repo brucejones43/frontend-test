@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
+declare var window: any;
+
 @Component({
   selector: 'app-wishList',
   templateUrl: './wishList.component.html',
@@ -18,11 +20,15 @@ export class wishListComponent implements OnInit {
   wishlistProducts: Product[] = [];
 
   title: string = "Wishlist";
-
+  formModal:any;
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router, private titleService: Title, private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
+    this.formModal = new window.bootstrap.Modal(
+      document.getElementById("orderItemsModal")
+    );
+
     this.titleService.setTitle("Wishlist - Soul Sounds Shop");
     let loggedInUser = JSON.parse(sessionStorage.loggedInUser || "{}");
 
@@ -64,4 +70,10 @@ export class wishListComponent implements OnInit {
     }
   }
 
+  closeMessage() {
+
+  }
+  openMessage() {
+    this.formModal.show();
+  }
 }

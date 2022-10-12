@@ -24,6 +24,9 @@ export class ProductCardComponent implements OnInit{
   wishlistClicked = false;
   cartBtnClicked = false;
 
+  responseReceived = false;
+  response = "";
+
   @Input() productInfo!: Product;
 
   constructor(private productService: ProductService, private wishlistService: WishlistService, private router: Router) { }
@@ -81,8 +84,10 @@ export class ProductCardComponent implements OnInit{
           ++element.quantity;
 
           this.productService.addCartItem(product).subscribe(
-            () => {
-              alert("Added to cart.");
+            (resp) => {
+              this.responseReceived = true;
+              this.response = resp.message;
+              alert(resp.message);
             },
             (error) => {
               console.log(error);
@@ -116,10 +121,10 @@ export class ProductCardComponent implements OnInit{
     if(inCart == false){
       this.productService.addCartItem(product).subscribe(
         (resp) => {
-          console.log(resp);
+          alert(resp.message);
+
           this.productService.getUserCart().subscribe(
             (cart) => {
-              alert("Added to cart.");
               this.productService.setCart(cart);
               console.log(cart.totalQuantity);
             },
@@ -150,8 +155,7 @@ export class ProductCardComponent implements OnInit{
   addToWishlist(product: Product): void {
     this.wishlistService.addToWishlist(product.id).subscribe(
       (resp) => {
-        console.log(resp);
-        alert("Added to wishlist.");
+        alert(resp.message);
       },
       (error) => {
         console.log(error);
@@ -162,12 +166,15 @@ export class ProductCardComponent implements OnInit{
         }
       }, 
       () => {
-        this.wishlistClicked = false;
       }
     )
   }
 
-
+  resetResponse() {
+    this.responseReceived = false;
+    console.log(this.responseReceived);
+    
+  }
   ngOnDestroy() {
     // this.subscription.unsubscribe();
   }
