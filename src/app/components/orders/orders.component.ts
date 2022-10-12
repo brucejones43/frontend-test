@@ -1,5 +1,6 @@
 
 import { Component, Input, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
 import { CartItem } from 'src/app/models/cartItem';
@@ -26,10 +27,11 @@ export class OrdersComponent implements OnInit {
 
 
 
-  constructor(private orderService: OrderService,private router: Router) { }
+  constructor(private orderService: OrderService,private router: Router, private titleService: Title) { }
 
   ngOnInit(): void {
-
+    this.titleService.setTitle("Orders - Soul Sounds");
+    
     this.formModal = new window.bootstrap.Modal(
       document.getElementById("orderItemsModal")
     );
