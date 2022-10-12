@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-product-card',
@@ -19,35 +21,14 @@ export class ProductCardComponent implements OnInit{
   subscription!: Subscription;
   totalPrice: number = 0;
 
+  wishlistClicked = false;
+  cartBtnClicked = false;
+
   @Input() productInfo!: Product;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private wishlistService: WishlistService, private router: Router) { }
   
   ngOnInit(): void {
-    // this.subscription = this.productService.getUserCart().subscribe(
-    //   (cart) => {
-    //     // this.productService.getCartItems().subscribe(
-    //     //   (items) => {
-    //     //     for (let item of items) {
-    //     //       this.products.push({product: item.product, quantity: item.quantity});
-    //     //     }
-    //     //   },
-    //     //   (error) => {
-    //     //     console.log(error);
-    //     //   },
-    //     //   () => {
-    //     //     // // this.products = cart.products;
-    //     //     // this.products.forEach(
-    //     //     //   (element) => this.cartProducts.push(element.product)
-    //     //     // );
-    //     //     this.totalPrice = cart.totalPrice;
-    //     //     this.cartCount = cart.totalQuantity;
-    //     //   }
-    //     // )
-    //     // this.products = cart.products;
-    //     // this.totalPrice = cart.totalPrice;
-    //   }
-    // );
 
     if (localStorage.getItem("mode") === "dark") {
       
@@ -98,15 +79,11 @@ export class ProductCardComponent implements OnInit{
       (element) => {
         if(element.product == product){
           ++element.quantity;
-          // let cart = {
-          //   cartCount: this.cartCount + 1,
-          //   totalQuantity: this.totalQuantity +1,
-          //   products: this.products,
-          //   totalPrice: this.totalPrice + product.price
-          // };
-          // this.productService.setCart(cart);
+
           this.productService.addCartItem(product).subscribe(
-            () => console.log("Item Added to Cart"),
+            () => {
+              alert("Added to cart.");
+            },
             (error) => {
               console.log(error);
             }, 
@@ -117,13 +94,18 @@ export class ProductCardComponent implements OnInit{
                 },
                 (error) => {
                   console.log(error);
+                  if (error.status == 401) {
+                    sessionStorage.setItem("loggedIn", "false");
+                    sessionStorage.removeItem("loggedInUser");
+                    this.router.navigate(['login']);
+                  }
                 },
                 () => {
+                  this.cartBtnClicked = false;
                   inCart=true;
                   return;
                 }
               );
-              
             }
           );
           
@@ -132,31 +114,25 @@ export class ProductCardComponent implements OnInit{
     );
 
     if(inCart == false){
-      // let newProduct = {
-      //   product: product,
-      //   quantity: 1
-      // };
-      // this.products.push(newProduct);
-      // let cart = {
-      //   cartCount: this.cartCount + 1,
-      //   totalQuantity: this.totalQuantity +1,
-      //   products: this.products,
-      //   totalPrice: this.totalPrice + product.price
-      // }
-      // this.productService.setCart(cart);
       this.productService.addCartItem(product).subscribe(
-        () => {
-          console.log("Item Added to Cart");
+        (resp) => {
+          console.log(resp);
           this.productService.getUserCart().subscribe(
             (cart) => {
+              alert("Added to cart.");
               this.productService.setCart(cart);
               console.log(cart.totalQuantity);
             },
             (error) => {
               console.log(error);
+              if (error.status == 401) {
+                sessionStorage.setItem("loggedIn", "false");
+                sessionStorage.removeItem("loggedInUser");
+                this.router.navigate(['login']);
+              }
             },
             () => {
-
+              this.cartBtnClicked = false;
             }
           );
         } ,
@@ -172,42 +148,25 @@ export class ProductCardComponent implements OnInit{
   }
 
   addToWishlist(product: Product): void {
-
-    let inCart = false;
-
-    this.products.forEach(
-      (element) => {
-        if(element.product == product){
-          ++element.quantity;
-          let cart = {
-            cartCount: this.cartCount + 1,
-            totalQuantity: this.totalQuantity +1,
-            products: this.products,
-            totalPrice: this.totalPrice + product.price
-          };
-          this.productService.setCart(cart);
-          inCart=true;
-          return;
-        };
+    this.wishlistService.addToWishlist(product.id).subscribe(
+      (resp) => {
+        console.log(resp);
+        alert("Added to wishlist.");
+      },
+      (error) => {
+        console.log(error);
+        if (error.status == 401) {
+          sessionStorage.setItem("loggedIn", "false");
+          sessionStorage.removeItem("loggedInUser");
+          this.router.navigate(['login']);
+        }
+      }, 
+      () => {
+        this.wishlistClicked = false;
       }
-    );
-
-    if(inCart == false){
-      let newProduct = {
-        product: product,
-        quantity: 1
-      };
-      this.products.push(newProduct);
-      let cart = {
-        cartCount: this.cartCount + 1,
-        totalQuantity: this.totalQuantity +1,
-        products: this.products,
-        totalPrice: this.totalPrice + product.price
-      }
-      this.productService.setCart(cart);
-    }
-      
+    )
   }
+
 
   ngOnDestroy() {
     // this.subscription.unsubscribe();
