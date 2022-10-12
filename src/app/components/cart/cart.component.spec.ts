@@ -1,37 +1,35 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { CartItem } from 'src/app/models/cartItem';
 import { ProductService } from 'src/app/services/product.service';
-
 import { CartComponent } from './cart.component';
 
 describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     const titleStub = () => ({ setTitle: (_string: any) => ({}) });
     const routerStub = () => ({ navigate: (_array: any) => ({}) });
     const productServiceStub = () => ({
       getUserCart: () => ({ subscribe: (f: (arg0: {}) => any) => f({}) }),
       getCartItems: () => ({ subscribe: (f: (arg0: {}) => any) => f({}) }),
-      setCart: (cart: any) => ({})
+      addCartItem: (_product: any) => ({ subscribe: (f: (arg0: {}) => any) => f({}) }),
+      removeItem: (_item: any) => ({ subscribe: (f: (arg0: {}) => any) => f({}) }),
+      emptyCart: () => ({ subscribe: (f: (arg0: {}) => any) => f({}) })
     });
-    await TestBed.configureTestingModule({
-      declarations: [ CartComponent ],
+    TestBed.configureTestingModule({
+      declarations: [CartComponent],
       providers: [
         { provide: Title, useFactory: titleStub },
         { provide: Router, useFactory: routerStub },
         { provide: ProductService, useFactory: productServiceStub }
       ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
+    });
     fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -42,16 +40,48 @@ describe('CartComponent', () => {
     expect(component.products).toEqual([]);
   });
 
+  it(`totalPrice has default value`, () => {
+    expect(component.totalPrice).toEqual(0);
+  });
+
   it(`cartProducts has default value`, () => {
     expect(component.cartProducts).toEqual([]);
   });
 
-  it(`cartProducts has default value`, () => {
-    const fixture = TestBed.createComponent(CartComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('#cart-table')?.textContent).toContain('ID')
+  it(`cartItems has default value`, () => {
+    expect(component.cartItems).toEqual([]);
   });
+
+  describe('addItem', () => {
+    it('makes expected calls', () => {
+      const routerStub: Router = fixture.debugElement.injector.get(Router);
+      const cartItemStub: CartItem = <any>{};
+      const productServiceStub: ProductService = fixture.debugElement.injector.get(
+        ProductService
+      );
+      spyOn(routerStub, 'navigate').and.callThrough();
+      spyOn(productServiceStub, 'addCartItem').and.callThrough();
+      component.addItem(cartItemStub);
+      expect(routerStub.navigate).toHaveBeenCalled();
+      expect(productServiceStub.addCartItem).toHaveBeenCalled();
+    });
+  });
+
+  describe('removeItem', () => {
+    it('makes expected calls', () => {
+      const routerStub: Router = fixture.debugElement.injector.get(Router);
+      const cartItemStub: CartItem = <any>{};
+      const productServiceStub: ProductService = fixture.debugElement.injector.get(
+        ProductService
+      );
+      spyOn(routerStub, 'navigate').and.callThrough();
+      spyOn(productServiceStub, 'removeItem').and.callThrough();
+      component.removeItem(cartItemStub);
+      expect(routerStub.navigate).toHaveBeenCalled();
+      expect(productServiceStub.removeItem).toHaveBeenCalled();
+    });
+  });
+
   describe('ngOnInit', () => {
     it('makes expected calls', () => {
       const routerStub: Router = fixture.debugElement.injector.get(Router);
@@ -75,11 +105,10 @@ describe('CartComponent', () => {
         ProductService
       );
       spyOn(routerStub, 'navigate').and.callThrough();
-      spyOn(productServiceStub, 'setCart').and.callThrough();
+      spyOn(productServiceStub, 'emptyCart').and.callThrough();
       component.emptyCart();
       expect(routerStub.navigate).toHaveBeenCalled();
-      expect(productServiceStub.setCart).toHaveBeenCalled();
+      expect(productServiceStub.emptyCart).toHaveBeenCalled();
     });
   });
-
 });
