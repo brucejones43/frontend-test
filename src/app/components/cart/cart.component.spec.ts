@@ -46,6 +46,12 @@ describe('CartComponent', () => {
     expect(component.cartProducts).toEqual([]);
   });
 
+  it(`cartProducts has default value`, () => {
+    const fixture = TestBed.createComponent(CartComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('#cart-table')?.textContent).toContain('ID')
+  });
   describe('ngOnInit', () => {
     it('makes expected calls', () => {
       const routerStub: Router = fixture.debugElement.injector.get(Router);
