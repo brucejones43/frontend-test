@@ -10,8 +10,8 @@ describe('DisplayYamahaProductsComponent', () => {
   let fixture: ComponentFixture<DisplayYamahaProductsComponent>;
 
   beforeEach(async () => {
-    const titleStub = () => ({ setTitle: (string: any) => ({}) });
-    const routerStub = () => ({ navigate: (array: any) => ({}) });
+    const titleStub = () => ({ setTitle: (_string: any) => ({}) });
+    const routerStub = () => ({ navigate: (_array: any) => ({}) });
     const productServiceStub = () => ({
       getProductsByBrand: (string: any) => ({ subscribe: (f: (arg0: {}) => any) => f({}) })
     });

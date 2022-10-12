@@ -10,8 +10,8 @@ describe('CartComponent', () => {
   let fixture: ComponentFixture<CartComponent>;
 
   beforeEach(async () => {
-    const titleStub = () => ({ setTitle: (string: any) => ({}) });
-    const routerStub = () => ({ navigate: (array: any) => ({}) });
+    const titleStub = () => ({ setTitle: (_string: any) => ({}) });
+    const routerStub = () => ({ navigate: (_array: any) => ({}) });
     const productServiceStub = () => ({
       getUserCart: () => ({ subscribe: (f: (arg0: {}) => any) => f({}) }),
       getCartItems: () => ({ subscribe: (f: (arg0: {}) => any) => f({}) }),
