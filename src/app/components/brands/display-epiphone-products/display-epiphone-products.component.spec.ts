@@ -9,25 +9,22 @@ describe('DisplayEpiphoneProductsComponent', () => {
   let component: DisplayEpiphoneProductsComponent;
   let fixture: ComponentFixture<DisplayEpiphoneProductsComponent>;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     const titleStub = () => ({ setTitle: (_string: any) => ({}) });
     const routerStub = () => ({ navigate: (_array: any) => ({}) });
     const productServiceStub = () => ({
       getProductsByBrand: (string: any) => ({ subscribe: (f: (arg0: {}) => any) => f({}) })
     });
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       declarations: [DisplayEpiphoneProductsComponent],
       providers: [
         { provide: Title, useFactory: titleStub },
         { provide: Router, useFactory: routerStub },
         { provide: ProductService, useFactory: productServiceStub }
       ]
-    })
-    .compileComponents();
-
+    });
     fixture = TestBed.createComponent(DisplayEpiphoneProductsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

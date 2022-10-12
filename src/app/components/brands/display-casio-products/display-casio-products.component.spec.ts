@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
@@ -16,7 +15,6 @@ describe('DisplayCasioProductsComponent', () => {
       getProductsByBrand: (string: any) => ({ subscribe: (f: (arg0: {}) => any) => f({}) })
     });
     TestBed.configureTestingModule({
-      schemas: [NO_ERRORS_SCHEMA],
       declarations: [DisplayCasioProductsComponent],
       providers: [
         { provide: Title, useFactory: titleStub },
