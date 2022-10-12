@@ -19,6 +19,7 @@ export class wishListComponent implements OnInit {
 
   title: string = "Wishlist";
 
+
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router, private titleService: Title, private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
