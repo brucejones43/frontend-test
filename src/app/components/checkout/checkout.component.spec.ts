@@ -30,13 +30,11 @@ describe('CheckoutComponent', () => {
         { provide: OrderService, useFactory: orderServiceStub }
       ]
     })
-    .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CheckoutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
